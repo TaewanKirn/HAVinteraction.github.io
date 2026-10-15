@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="드라이빙 시뮬레이터에 탑승해 자율주행차량 인터페이스를 경험하고 평가하는 실험입니다. 약 60분 · 2026.10.14 - 11.11 · 홍익대학교 서울캠퍼스">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="홍익대학교 국제디자인전문대학원">
+<meta property="og:title" content="드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청">
+<meta property="og:description" content="드라이빙 시뮬레이터에 탑승해 자율주행차량 인터페이스를 경험하고 평가하는 실험입니다. 약 60분 · 2026.10.14 - 11.11 · 홍익대학교 서울캠퍼스">
+<meta property="og:url" content="https://taewankirn.github.io/HAVinteraction.github.io/">
+<meta property="og:image" content="https://taewankirn.github.io/HAVinteraction.github.io/media/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="참여자 모집: 드라이빙 시뮬레이터 자율주행차량 인터페이스 실험">
+<meta name="twitter:card" content="summary_large_image">
+<title>드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청</title>
+<style>
+/* 모집 신청 페이지 (모바일 우선). 토큰은 설문 앱과 같은 키 컬러 체계를 쓴다. */
+:root {
+  --key: #05141F; --key-90: #1B2933; --key-70: #45525C; --key-soft: #E5E9EC; --key-faint: #F2F4F6;
+  --fg: #05141F; --muted: #5E6A73; --line: #D5DBE0; --bg: #EEF1F3; --card: #FFFFFF;
+  --warn: #A8460B; --warn-soft: #FBEBDD; --ok: #1F7A48; --ok-soft: #E2F0E9; --danger: #B3261E;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --key: #E8EDF0; --key-90: #CBD3D9; --key-70: #A3AEB6; --key-soft: #26333C; --key-faint: #1B252C;
+    --fg: #E8EDF0; --muted: #98A4AD; --line: #34434E; --bg: #0F171C; --card: #172129;
+    --warn: #F0A468; --warn-soft: #3A2A1B; --ok: #6BCB97; --ok-soft: #173127; --danger: #F2877F;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.65 "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  letter-spacing: -0.005em; word-break: keep-all;
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 104px; }
+header.hero { padding: 28px 0 8px; }
+h1 { font-size: clamp(18px, 5.2vw, 26px); line-height: 1.35; margin: 0 0 10px; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 18px; margin: 0 0 12px; letter-spacing: -0.01em; }
+p { margin: 0 0 10px; }
+.lead { color: var(--key-70); margin-bottom: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-top: 16px; }
+.steps { display: flex; gap: 6px; margin: 20px 0 0; padding: 0; list-style: none; }
+.steps li { flex: 1; font-size: 12px; color: var(--muted); border-top: 3px solid var(--line); padding-top: 6px; }
+.steps li.on { color: var(--fg); border-color: var(--key); font-weight: 600; }
+.steps li.done { border-color: var(--key-70); }
+dl.facts { margin: 0; display: grid; grid-template-columns: 5.2em 1fr; gap: 10px 14px; }
+dl.facts dt { color: var(--muted); font-size: 14px; padding-top: 1px; }
+dl.facts dd { margin: 0; }
+.note { background: var(--key-faint); border-radius: 10px; padding: 12px 14px; font-size: 15px; margin-top: 14px; }
+.note b { font-weight: 600; }
+.btn { appearance: none; border: 0; border-radius: 12px; min-height: 52px; padding: 0 22px; font: inherit; font-weight: 600; cursor: pointer; background: var(--key); color: var(--card); }
+.btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.btn:focus-visible, .chip:focus-visible, .day:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--key-70); outline-offset: 2px; }
+.row { display: flex; gap: 10px; margin-top: 18px; }
+.row .btn { flex: 1; }
+.row .btn.ghost { flex: 0 0 auto; }
+fieldset { border: 0; margin: 0 0 18px; padding: 0; }
+legend { font-weight: 600; margin-bottom: 8px; padding: 0; }
+.hint { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.chip span { display: block; min-height: 48px; padding: 11px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.chip input:checked + span { background: var(--key); color: var(--card); border-color: var(--key); }
+.chip input:focus-visible + span { outline: 3px solid var(--key-70); outline-offset: 2px; }
+label.field { display: block; font-weight: 600; margin-bottom: 6px; }
+input[type=text], input[type=email], input[type=tel] {
+  width: 100%; min-height: 50px; padding: 0 14px; font: inherit; color: var(--fg); background: var(--card);
+  border: 1px solid var(--line); border-radius: 12px;
+}
+.err { color: var(--danger); font-size: 14px; margin-top: 6px; min-height: 1em; }
+.check { display: flex; gap: 10px; align-items: flex-start; }
+.check input { width: 22px; height: 22px; margin: 3px 0 0; flex: none; accent-color: var(--key); }
+/* 달력 */
+.calhead { display: flex; align-items: center; justify-content: space-between; margin: 6px 0 10px; }
+.calhead b { font-size: 16px; }
+.calhead button { appearance: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg); font: inherit; font-size: 22px; line-height: 1; cursor: pointer; }
+.calhead button:disabled { opacity: .35; cursor: not-allowed; }
+.calhead button:focus-visible { outline: 3px solid var(--key-70); outline-offset: 2px; }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal .wd { text-align: center; font-size: 12px; color: var(--muted); padding-bottom: 2px; }
+.day { appearance: none; min-height: 58px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--fg);
+  font: inherit; font-size: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.25; cursor: pointer; padding: 4px 0; }
+.day small { font-size: 11px; color: var(--muted); }
+.day.sel { background: var(--key); border-color: var(--key); color: var(--card); }
+.day.sel small { color: var(--card); opacity: .8; }
+.day:disabled { background: transparent; border-color: transparent; color: var(--muted); opacity: .45; cursor: default; }
+.slots { margin-top: 18px; display: grid; gap: 8px; }
+.slot { appearance: none; text-align: left; display: flex; justify-content: space-between; align-items: center; min-height: 54px; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg); font: inherit; cursor: pointer; }
+.slot.sel { background: var(--key); color: var(--card); border-color: var(--key); }
+.slot:disabled { opacity: .45; cursor: not-allowed; }
+.tag { font-size: 12px; border-radius: 6px; padding: 1px 8px; background: var(--key-soft); color: var(--key-70); }
+.slot.sel .tag { background: rgba(255,255,255,.2); color: inherit; }
+details { margin-top: 18px; }
+summary { cursor: pointer; font-size: 14px; color: var(--muted); }
+.ok-box { background: var(--ok-soft); color: var(--ok); border-radius: 10px; padding: 12px 14px; font-weight: 600; margin-bottom: 14px; }
+.code { font: 700 28px/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; margin: 4px 0 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+th { color: var(--muted); font-weight: 500; }
+/* 언어 토글 · 문의 */
+.langbar { background: var(--bg); }
+.langbar-in { max-width: 640px; margin: 0 auto; padding: 10px 16px 0; display: flex; justify-content: flex-end; gap: 4px; }
+.langbar button { appearance: none; min-width: 48px; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--muted);
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.langbar button[aria-pressed="true"] { background: var(--key); border-color: var(--key); color: var(--card); }
+.langbar button:focus-visible { outline: 3px solid var(--key-70); outline-offset: 2px; }
+.lines span { display: block; }
+.picked { margin: 14px 0 18px; padding: 14px 12px; border: 2px solid var(--key); border-radius: 12px; background: var(--key-faint); text-align: center; font-size: 18px; font-weight: 700; line-height: 1.4; }
+.nw { white-space: nowrap; }
+.maplink { display: inline-block; margin-left: 6px; vertical-align: 1px; font-size: 13px; font-weight: 600; color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; white-space: nowrap; background: var(--card); }
+.maplink::after { content: ' ›'; }
+.loc-note { display: block; margin-top: 6px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.maplink:focus-visible { outline: 3px solid var(--key-70); outline-offset: 2px; }
+.notice { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--warn-soft); color: var(--warn); font-size: 14px; line-height: 1.5; font-weight: 600; }
+.contact { margin-top: 20px; }
+.contact h2 { margin: 0 0 6px; font-size: 16px; color: var(--muted); font-weight: 600; }
+.contact-line { margin: 0 0 2px; font-size: 15px; }
+html[lang="ko"] .contact-line.l1 { font-size: clamp(11px, 3.4vw, 15px); white-space: nowrap; }
+.contact-line .sep { color: var(--muted); margin: 0 8px; }
+.contact-line a { color: inherit; }
+.contact-line > * { display: inline-block; vertical-align: top; }
+.contact-line a { white-space: nowrap; }
+html[lang^="zh"] body { word-break: normal; overflow-wrap: anywhere; }
+.check > span { min-width: 0; }
+/* 참고 자료 */
+#media { margin-top: 24px; display: grid; gap: 12px; }
+#media > * { min-width: 0; }
+#media h2 { margin: 0; font-size: 16px; color: var(--muted); font-weight: 600; }
+#media .hint { margin: 0; }
+.clip { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: #0b141b; }
+.clip video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; background: #0b141b; }
+.clip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 11px; color: #fff; font-size: 13px; line-height: 1.4;
+  background: linear-gradient(to top, rgba(5,20,31,.82), rgba(5,20,31,0)); }
+.clip figcaption b { display: block; font-size: 15px; font-weight: 600; }
+.hero-clip { aspect-ratio: 1 / 1; max-width: 100%; }
+.photo-clip { aspect-ratio: 4 / 3; max-width: 100%; }
+.photo-clip img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mini-grid > * { min-width: 0; }
+.clip.mini { aspect-ratio: 16 / 10; border-radius: 10px; }
+.clip.mini figcaption { padding: 18px 10px 7px; }
+.clip.mini figcaption b { font-size: 13px; }
+.credit { font-size: 13px; }
+.credit a { color: inherit; }
+/* 하단 고정 신청 버튼 */
+.cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--bg); border-top: 1px solid var(--line);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
+.cta-in { max-width: 640px; margin: 0 auto; display: flex; gap: 10px; }
+.cta .btn { flex: 1; min-width: 0; padding: 0 12px; }
+.cta .btn.ghost { flex: 0 0 38%; }
+.btn.danger { background: var(--danger); color: #fff; }
+.sheet { position: fixed; inset: 0; z-index: 20; background: rgba(5,20,31,.55); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-in { width: 100%; max-width: 640px; max-height: 92%; overflow: auto; background: var(--card); color: var(--fg); border-radius: 18px 18px 0 0;
+  padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px)); }
+.sheet-in h2 { margin-top: 0; }
+dl.facts.top { margin-top: 14px; }
+footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="langbar"><div class="langbar-in" role="group" aria-label="언어"><button type="button" data-lang="ko" aria-pressed="true">KR</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="zh" aria-pressed="false">CN</button></div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청</h1>
+    <dl class="facts top">
+      <dt>주관</dt><dd>홍익대학교 국제디자인전문대학원</dd>
+      <dt>일정</dt><dd id="period" data-dyn></dd>
+      <dt>내용</dt><dd>자율주행차량 시뮬레이터에 탑승해 시나리오 및 인터페이스를 경험하고 평가하는 실험입니다.</dd>
+    </dl>
+    <ol class="steps" id="steps" data-dyn aria-label="신청 단계"></ol>
+  </header>
+
+  <!-- 1. 안내 -->
+  <section id="s1" class="card" aria-labelledby="h-s1">
+    <h2 id="h-s1">실험 개요</h2>
+    <dl class="facts">
+      <dt>진행 방식</dt>
+      <dd>시뮬레이터에 탑승한 뒤 설문과 인터뷰를 진행합니다.</dd>
+      <dt>소요 시간</dt>
+      <dd>약 60분</dd>
+      <dt>장소</dt>
+      <dd>홍익대학교 서울캠퍼스 제1공학관 K023 <a class="maplink" href="https://naver.me/GwpZBJQi" target="_blank" rel="noopener noreferrer">네이버 지도</a><span class="loc-note">실험 장소인 홍익대학교가 혼잡하므로 대중교통 이용을 권장드립니다. 자차 이용 시 1인당 1시간 주차권 1매만 제공 가능합니다. (이외 10분당 1,000원)</span></dd>
+      <dt>대상</dt>
+      <dd>차량 탑승에 불편함이 없는 만 14세 이상 누구나</dd>
+    </dl>
+    <div class="note"><b>참고사항</b><br>
+      움직이는 플랫폼이라 멀미나 어지럼이 생길 수 있습니다. 참여를 그만두고 싶으면 언제든 중단할 수 있습니다.</div>
+  </section>
+
+  <!-- 문의 (1·5단계에서 보인다) -->
+  <section id="contactBox" class="contact" aria-labelledby="h-contact">
+    <h2 id="h-contact">문의</h2>
+    <p class="contact-line l1"><span>김태완</span><span class="sep" aria-hidden="true">|</span><span>홍익대학교 국제디자인전문대학원 석사과정</span></p>
+    <p class="contact-line l2"><a href="mailto:taewan.kim@g.hongik.ac.kr">taewan.kim@g.hongik.ac.kr</a><span class="sep" aria-hidden="true">|</span><a href="tel:01036530140">010-3653-0140</a></p>
+  </section>
+
+  <!-- 참고 자료 (1단계에서만 보인다) -->
+  <section id="media" aria-labelledby="h-media">
+    <h2 id="h-media">참고 자료</h2>
+    <figure class="clip hero-clip">
+      <video muted loop playsinline preload="metadata" poster="media/sim6dof.jpg" aria-label="6-DOF 모션 플랫폼 구동 영상"><source src="media/sim6dof.mp4" type="video/mp4"></video>
+      <figcaption><b>6-DOF 모션 플랫폼</b>가속과 회전 때 차의 움직임을 몸으로 느낍니다.</figcaption>
+    </figure>
+    <figure class="clip photo-clip">
+      <img src="media/sim_driver.jpg" alt="시뮬레이터에 탑승한 참가자 (얼굴 블러 처리)" loading="lazy">
+      <figcaption><b>시뮬레이터 탑승 모습</b></figcaption>
+    </figure>
+    <p class="hint">CARLA는 이 실험의 주행 화면에 쓰는 오픈소스 자율주행 시뮬레이터입니다.</p>
+    <div class="mini-grid">
+      <figure class="clip mini"><video muted loop playsinline preload="metadata" poster="media/carla_city.jpg" aria-label="CARLA 도시 맵"><source src="media/carla_city.mp4" type="video/mp4"></video><figcaption><b>도시</b></figcaption></figure>
+      <figure class="clip mini"><video muted loop playsinline preload="metadata" poster="media/carla_street.jpg" aria-label="CARLA 거리"><source src="media/carla_street.mp4" type="video/mp4"></video><figcaption><b>거리</b></figcaption></figure>
+      <figure class="clip mini"><video muted loop playsinline preload="metadata" poster="media/carla_vehicles.jpg" aria-label="CARLA 차량"><source src="media/carla_vehicles.mp4" type="video/mp4"></video><figcaption><b>차량</b></figcaption></figure>
+      <figure class="clip mini"><video muted loop playsinline preload="metadata" poster="media/carla_people.jpg" aria-label="CARLA 보행자"><source src="media/carla_people.mp4" type="video/mp4"></video><figcaption><b>보행자</b></figcaption></figure>
+    </div>
+    <p class="hint credit">화면 출처: CARLA 공식 저장소(carla-simulator/carla) 문서 이미지, CC-BY 라이선스.
+      <a href="https://www.youtube.com/watch?v=q4V9GYjA1pE" target="_blank" rel="noopener noreferrer">공식 소개 영상 보기</a></p>
+  </section>
+
+  <!-- 하단 고정 신청 버튼 (1단계에서만 보인다) -->
+  <div class="cta" id="cta"><div class="cta-in"><button class="btn ghost" id="manageOpen" type="button">실험 신청/변경</button><button class="btn" id="start" type="button">참여 신청하기</button></div></div>
+
+  <!-- 신청 변경·취소 (첫 화면 버튼으로 연다) -->
+  <div class="sheet" id="manageSheet" role="dialog" aria-modal="true" aria-labelledby="h-m" hidden>
+    <div class="sheet-in">
+      <h2 id="h-m">실험 신청/변경</h2>
+      <label class="field" for="cCode">신청 코드</label>
+      <input type="text" id="cCode" autocomplete="off" style="text-transform:uppercase">
+      <label class="field" for="cEmail" style="margin-top:12px">이메일</label>
+      <input type="email" id="cEmail" autocomplete="email" inputmode="email">
+      <div class="err" id="eCancel" role="alert"></div>
+      <div id="found" hidden>
+        <div class="note" style="margin-top:0"><b id="foundSlot" data-dyn></b></div>
+        <p class="hint">일정을 바꾸려면 취소한 뒤 다시 신청하세요.</p>
+        <button class="btn danger" type="button" id="doCancel" style="width:100%">이 신청 취소</button>
+      </div>
+      <div class="row"><button class="btn ghost" type="button" id="mClose">닫기</button><button class="btn" type="button" id="mFind">조회</button></div>
+    </div>
+  </div>
+
+  <!-- 2. 자격 확인 -->
+  <section id="s2" class="card" hidden aria-labelledby="h-s2">
+    <h2 id="h-s2">참여 가능 여부 확인</h2>
+    <p class="hint">아래 답변은 참여 가능 여부 판단과 일정 안내에만 활용됩니다.</p>
+    <fieldset>
+      <legend>만 나이를 선택하세요.</legend>
+      <p class="hint" style="margin:-4px 0 8px">만 18세 미만은 신청자 정보 단계에서 보호자 정보와 동의 확인이 필요합니다.</p>
+      <div class="opts" data-q="age">
+        <label class="chip"><input type="radio" name="age" value="m"><span>만 14~17세</span></label>
+        <label class="chip"><input type="radio" name="age" value="a"><span>만 18세 이상</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>한국어 또는 영어로 진행하는 설명을 듣고 설문에 답할 수 있습니까?</legend>
+      <div class="opts">
+        <label class="chip"><input type="radio" name="lang" value="y"><span>예</span></label>
+        <label class="chip"><input type="radio" name="lang" value="n"><span>아니요</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>선호하는 실험 진행 언어</legend>
+      <div class="opts">
+        <label class="chip"><input type="radio" name="prefLang" value="ko"><span>한국어</span></label>
+        <label class="chip"><input type="radio" name="prefLang" value="en"><span>English</span></label>
+        <label class="chip"><input type="radio" name="prefLang" value="zh-CN"><span>中文（中国）简体</span></label>
+        <label class="chip"><input type="radio" name="prefLang" value="zh-TW"><span>中文（香港・台灣）繁體</span></label>
+      </div>
+      <div class="hint">실험 설명과 설문을 이 언어로 진행합니다.</div>
+    </fieldset>
+    <fieldset>
+      <legend>평소 시력 교정은 어떤 방법으로 하십니까?</legend>
+      <p class="hint" style="margin:-4px 0 8px">시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.</p>
+      <div class="opts">
+        <label class="chip"><input type="radio" name="vision" value="none"><span>교정 안 함</span></label>
+        <label class="chip"><input type="radio" name="vision" value="lens"><span>콘택트렌즈</span></label>
+        <label class="chip"><input type="radio" name="vision" value="glasses"><span>안경</span></label>
+      </div>
+      <p class="notice" id="glassesNote" data-dyn role="status" hidden></p>
+    </fieldset>
+    <fieldset>
+      <legend>다음 중 해당하는 것이 있습니까?</legend>
+      <p class="hint lines" style="margin:-4px 0 8px">
+        <span>1) 어지럼이나 평형에 영향을 주는 질환(전정기관 질환)</span>
+        <span>2) 심혈관 질환</span>
+        <span>3) 임신</span>
+        <span>4) 빛 자극으로 인한 발작 경험</span>
+        <span>5) 안구 질환</span>
+        <span>6) 청력 문제</span>
+      </p>
+      <div class="opts">
+        <label class="chip"><input type="radio" name="health" value="n"><span>해당 없음</span></label>
+        <label class="chip"><input type="radio" name="health" value="y"><span>해당 있음</span></label>
+      </div>
+    </fieldset>
+    <div class="err" id="e2" role="alert"></div>
+    <div class="row">
+      <button class="btn ghost" type="button" data-go="1">이전</button>
+      <button class="btn" id="next2" type="button">다음</button>
+    </div>
+  </section>
+
+  <!-- 3. 일정 -->
+  <section id="s3" class="card" hidden aria-labelledby="h-s3">
+    <h2 id="h-s3">일정 선택</h2>
+    <p class="hint" id="s3hint" data-dyn></p><!-- 문구는 스크립트가 채운다 -->
+
+    <div class="calhead" id="calHead" data-dyn></div>
+    <div class="cal" id="cal" data-dyn role="group" aria-label="날짜"></div>
+    <div class="slots" id="slots" data-dyn aria-live="polite"></div>
+    <div class="err" id="e3" role="alert"></div>
+    <div class="row">
+      <button class="btn ghost" type="button" data-go="2">이전</button>
+      <button class="btn" id="next3" type="button" disabled>다음</button>
+    </div>
+  </section>
+
+  <!-- 4. 정보 입력 -->
+  <section id="s4" class="card" hidden aria-labelledby="h-s4">
+    <h2 id="h-s4">신청자 정보</h2>
+    <p class="picked" id="picked" data-dyn></p>
+    <div>
+      <label class="field" for="fName">성명</label>
+      <input type="text" id="fName" autocomplete="name">
+      <div class="err" id="eName"></div>
+    </div>
+    <fieldset style="margin-top:6px">
+      <legend>성별</legend>
+      <div class="opts">
+        <label class="chip"><input type="radio" name="gender" value="남"><span>남</span></label>
+        <label class="chip"><input type="radio" name="gender" value="여"><span>여</span></label>
+      </div>
+      <div class="err" id="eGender"></div>
+    </fieldset>
+    <div>
+      <label class="field" for="fEmail">이메일</label>
+      <input type="email" id="fEmail" autocomplete="email" inputmode="email">
+      <div class="err" id="eEmail"></div>
+    </div>
+    <div style="margin-top:6px">
+      <label class="field" for="fPhone">전화번호</label>
+      <input type="tel" id="fPhone" autocomplete="tel" inputmode="tel">
+      <div class="hint">연락처는 참여 확정 안내 및 당일 연락을 위해 활용됩니다.</div>
+      <div class="err" id="ePhone"></div>
+    </div>
+    <fieldset id="guardianBox" hidden style="margin-top:6px">
+      <legend>보호자 정보 (만 18세 미만)</legend>
+      <label class="field" for="gName">보호자 성명</label>
+      <input type="text" id="gName" autocomplete="off">
+      <div class="err" id="eGName"></div>
+      <label class="field" for="gContact" style="margin-top:6px">보호자 연락처</label>
+      <input type="text" id="gContact" autocomplete="off" inputmode="tel">
+      <div class="hint">전화번호 또는 이메일</div>
+      <div class="err" id="eGContact"></div>
+      <label class="check" style="margin-top:8px"><input type="checkbox" id="gConsent"><span>보호자가 이 연구 참여에 동의했습니다.</span></label>
+      <div class="err" id="eGConsent"></div>
+    </fieldset>
+    <div class="note" style="margin-top:0">
+      <label class="check"><input type="checkbox" id="fConsent">
+        <span>일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.</span></label>
+      <div class="err" id="eConsent"></div>
+    </div>
+    <div class="err" id="e4" role="alert"></div>
+    <div class="row">
+      <button class="btn ghost" type="button" data-go="3">이전</button>
+      <button class="btn" id="submit" type="button">신청 완료</button>
+    </div>
+  </section>
+
+  <!-- 5. 완료 -->
+  <section id="s5" class="card" hidden aria-labelledby="h-s5">
+    <div class="ok-box" id="h-s5">신청이 접수되었습니다</div>
+    <div class="note" id="previewNote" hidden style="margin-top:0;margin-bottom:14px">이 화면은 미리보기라서 신청이 저장되지 않았습니다.</div>
+    <div class="note" id="mailNote" hidden style="margin-top:0;margin-bottom:14px">접수 내용을 입력한 이메일로 보냅니다. 몇 분 안에 도착하지 않으면 스팸함을 확인하세요.</div>
+    <dl class="facts">
+      <dt>일정</dt><dd id="doneSlot" data-dyn></dd>
+      <dt>장소</dt><dd>홍익대학교 서울캠퍼스 제1공학관 K023 <a class="maplink" href="https://naver.me/GwpZBJQi" target="_blank" rel="noopener noreferrer">네이버 지도</a><span class="loc-note">실험 장소인 홍익대학교가 혼잡하므로 대중교통 이용을 권장드립니다. 자차 이용 시 1인당 1시간 주차권 1매만 제공 가능합니다. (이외 10분당 1,000원)</span></dd>
+      <dt>신청 코드</dt><dd><div class="code" id="doneCode" data-dyn></div><div class="hint">일정 변경이나 취소에 필요합니다. 적어 두세요.</div></dd>
+    </dl>
+    <div class="note"><b>이후 절차</b><br>
+      참여가 확정되면 입력한 이메일로 알립니다.</div>
+    <div class="note" id="dayNote11"><b>당일 안내</b><br>
+      약속 시각 10분 전까지 도착하세요. 평소 쓰는 안경이나 렌즈는 그대로 착용하면 됩니다. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.</div>
+    <div class="note" id="dayNote12" hidden><b>당일 안내</b><br>
+      약속 시각 10분 전까지 도착하세요. 이 일정은 안경형 시선 측정 장비를 착용하므로 콘택트렌즈를 끼거나 안경 없이 오세요. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.</div>
+  </section>
+
+  <footer id="foot">참여는 자발적이며 언제든 그만둘 수 있습니다. 수집한 연락처는 연구 자료와 분리해 관리합니다.</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ───────── 설정 ─────────
+   * 일정 규칙은 여기만 고친다. 요일은 0=일 … 6=토.
+   * blocks: 연구자 불가 시간(closed)과 수업 수강생 전용 시간(class). class 시간 안에는 수강생 전용 칸이 생긴다. */
+  var CFG = {
+    start: '2026-10-14', end: '2026-11-11',
+    dayStart: '10:00', dayEnd: '20:00',
+    dayEndBy: { 0: '21:00' },   // 요일별 종료 시각(0=일)
+    sessionMin: 60,            // 참가자가 머무는 시간
+    pitchMin: 90,              // 다음 칸까지의 간격 (세션 + 장비 리셋·정리)
+    minLeadHours: 24,          // 시작 시각 이 시간 전까지 신청 가능
+    openWeekdays: [0, 1, 2, 3, 4, 5],   // 토요일(6) 제외
+    blocks: [
+      { weekday: 4, from: '10:00', to: '14:00', kind: 'closed' },   // 목요일 10–14시
+      { weekday: 3, from: '15:00', to: '18:00', kind: 'class' }     // 수요일 15–18시: 수업 수강생용 칸. 이 페이지에서는 '마감'으로 보인다
+    ],
+    // Study 구분: 위에서부터 처음 맞는 규칙이 적용되고, 없으면 '1-1'. 1-2(시선 측정) 칸은 안경 착용자가 선택할 수 없다.
+    // 규칙 키: weekdays(0=일…6=토), from, to(YYYY-MM-DD)
+    studyRules: [ { to: '2026-10-27', study: '1-1' }, { from: '2026-10-28', study: '1-2' } ],
+    api: 'https://script.google.com/macros/s/AKfycbybCV6NhfWNEecro5ufh9X1AuFibrTcp2k8FUncnHsfbmvK7D8YBM3GF16jxgiDE0Gw1g/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
+  };
+  // 이 값들은 서버가 없을 때(미리보기)만 쓴다. 서버가 있으면 서버의 schedule.json 이 일정을 정한다.
+  var STORE = 'hav_recruit_draft_bookings';
+
+  /* ───────── 번역 (Claude 번역, 모국어 검수 전) ─────────
+   * 키 = 한국어 원문(프로젝트 i18n 규칙). 번역이 없으면 한국어가 그대로 나온다.
+   * 학과·기관 영문/중문명은 06_stimuli/i18n/{en,zh-CN}/consent.json 의 config 와 같다. */
+  var T = {
+    en: {
+      '드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청': 'Application to Participate in Autonomous Vehicle Interface Research Using a Driving Simulator',
+      '주관': 'Host',
+      '홍익대학교 국제디자인전문대학원': 'International Design School for Advanced Studies, Hongik University',
+      '일정': 'Schedule',
+      '내용': 'Summary',
+      '자율주행차량 시뮬레이터에 탑승해 시나리오 및 인터페이스를 경험하고 평가하는 실험입니다.': 'In this experiment, you ride in an autonomous vehicle simulator, experience its scenarios and interface, and evaluate them.',
+      '안내': 'Info', '자격': 'Check', '정보': 'Details', '완료': 'Done',
+      '실험 개요': 'Study overview',
+      '진행 방식': 'Procedure',
+      '시뮬레이터에 탑승한 뒤 설문과 인터뷰를 진행합니다.': 'After riding in the simulator, you complete a questionnaire and an interview.',
+      '소요 시간': 'Duration',
+      '약 60분': 'About 60 minutes',
+      '장소': 'Location',
+      '홍익대학교 서울캠퍼스 제1공학관 K023': 'Room K023, Engineering Building 1, Hongik University Seoul Campus',
+      '네이버 지도': 'Naver Map',
+      '실험 장소인 홍익대학교가 혼잡하므로 대중교통 이용을 권장드립니다. 자차 이용 시 1인당 1시간 주차권 1매만 제공 가능합니다. (이외 10분당 1,000원)': 'Hongik University is crowded, so we recommend public transportation. If you drive, only one 1-hour parking ticket per person can be provided (additional parking: KRW 1,000 per 10 minutes).',
+      '대상': 'Eligibility',
+      '차량 탑승에 불편함이 없는 만 14세 이상 누구나': 'Anyone aged 14 or older who can ride in a vehicle comfortably',
+      '참고사항': 'Notes',
+      '움직이는 플랫폼이라 멀미나 어지럼이 생길 수 있습니다. 참여를 그만두고 싶으면 언제든 중단할 수 있습니다.': 'The platform moves, so you may feel motion sickness or dizziness. If you want to stop, you may do so at any time.',
+      '문의': 'Contact',
+      '김태완': 'Taewan Kim',
+      '홍익대학교 국제디자인전문대학원 석사과정': "Master's student, International Design School for Advanced Studies, Hongik University",
+      '참고 자료': 'Reference materials',
+      '6-DOF 모션 플랫폼': '6-DOF motion platform',
+      '가속과 회전 때 차의 움직임을 몸으로 느낍니다.': "You feel the car's movement in your body as it accelerates and turns.",
+      '시뮬레이터 탑승 모습': 'Riding in the simulator',
+      'CARLA는 이 실험의 주행 화면에 쓰는 오픈소스 자율주행 시뮬레이터입니다.': "CARLA is the open-source autonomous driving simulator used for this experiment's driving scenes.",
+      '도시': 'City', '거리': 'Street', '차량': 'Vehicles', '보행자': 'Pedestrians',
+      '화면 출처: CARLA 공식 저장소(carla-simulator/carla) 문서 이미지, CC-BY 라이선스.': 'Image source: CARLA official repository (carla-simulator/carla) documentation images, CC-BY license.',
+      '공식 소개 영상 보기': 'Watch the official intro video',
+      '참여 신청하기': 'Sign up to participate',
+      '참여 가능 여부 확인': 'Eligibility check',
+      '아래 답변은 참여 가능 여부 판단과 일정 안내에만 활용됩니다.': 'The answers below are used only to determine eligibility and arrange your session.',
+      '만 나이를 선택하세요.': 'Select your age.',
+      '만 18세 미만은 신청자 정보 단계에서 보호자 정보와 동의 확인이 필요합니다.': 'If you are under 18, you will be asked for your guardian\'s details and consent in the applicant details step.',
+      '만 14~17세': '14 to 17',
+      '만 18세 이상': '18 or older',
+      '보호자 정보 (만 18세 미만)': 'Guardian details (under 18)',
+      '보호자 성명': 'Guardian\'s full name',
+      '보호자 연락처': 'Guardian\'s contact',
+      '전화번호 또는 이메일': 'Phone number or email',
+      '보호자가 이 연구 참여에 동의했습니다.': 'My guardian has agreed to my participation in this study.',
+      '보호자 성명을 입력하세요.': 'Enter your guardian\'s name.',
+      '보호자 연락처를 입력하세요.': 'Enter your guardian\'s contact.',
+      '보호자 동의가 필요합니다.': 'Guardian consent is required.',
+      '예': 'Yes', '아니요': 'No',
+      '한국어 또는 영어로 진행하는 설명을 듣고 설문에 답할 수 있습니까?': 'Can you follow the explanations and answer the questionnaire in Korean or English?',
+      '다음 중 해당하는 것이 있습니까?': 'Do any of the following apply to you?',
+      '1) 어지럼이나 평형에 영향을 주는 질환(전정기관 질환)': '1) A condition affecting dizziness or balance (vestibular disorder)',
+      '2) 심혈관 질환': '2) Cardiovascular disease',
+      '3) 임신': '3) Pregnancy',
+      '4) 빛 자극으로 인한 발작 경험': '4) A history of seizures triggered by light',
+      '5) 안구 질환': '5) An eye disease',
+      '6) 청력 문제': '6) A hearing problem',
+      '해당 없음': 'None apply', '해당 있음': 'Some apply',
+      '이전': 'Back', '다음': 'Next',
+      '일정 선택': 'Choose a date and time',
+      '수업 수강생입니까?': 'Are you a course student?',
+      '수강생 신청 코드': 'Course student code',
+      '코드 확인': 'Check code',
+      '신청자 정보': 'Applicant details',
+      '성명': 'Full name',
+      '이메일': 'Email',
+      '전화번호': 'Phone number',
+      '연락처는 참여 확정 안내 및 당일 연락을 위해 활용됩니다.': 'Your contact details are used to confirm your participation and to reach you on the day.',
+      '성별': 'Gender', '남': 'Male', '여': 'Female',
+      '평소 시력 교정은 어떤 방법으로 하십니까?': 'How do you usually correct your vision?',
+      '교정 안 함': 'None', '콘택트렌즈': 'Contact lenses', '안경': 'Glasses',
+      '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': 'Available sessions may differ depending on how you correct your vision.',
+      '안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.': 'If you wear glasses, you can take part only through {date}.',
+      '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': 'I agree to the collection and use of my name and contact details for scheduling. This information is stored separately from research data and will be destroyed after the experiment ends.',
+      '신청 완료': 'Submit application',
+      '신청이 접수되었습니다': 'Your application has been received',
+      '이 화면은 미리보기라서 신청이 저장되지 않았습니다.': 'This is a preview, so your application was not saved.',
+      '접수 내용을 입력한 이메일로 보냅니다. 몇 분 안에 도착하지 않으면 스팸함을 확인하세요.': 'We are emailing your application details to the address you entered. If it does not arrive within a few minutes, please check your spam folder.',
+      '신청 코드': 'Application code',
+      '일정 변경이나 취소에 필요합니다. 적어 두세요.': 'You need it to change or cancel your booking. Please write it down.',
+      '이후 절차': 'Next steps',
+      '참여가 확정되면 입력한 이메일로 알립니다.': 'We will email you once your participation is confirmed.',
+      '당일 안내': 'On the day',
+      '약속 시각 10분 전까지 도착하세요. 평소 쓰는 안경이나 렌즈는 그대로 착용하면 됩니다. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': 'Please arrive 10 minutes before your appointment. Wear your usual glasses or contact lenses. If you do not feel well, you can change your appointment.',
+      '실험 신청/변경': 'My booking',
+      '이 신청 취소': 'Cancel this booking',
+      '조회': 'Look up',
+      '신청 코드와 이메일이 일치하는 신청을 찾을 수 없습니다.': 'No booking matches this code and email.',
+      '닫기': 'Close',
+      '시선 측정 포함': 'Eye tracking included',
+      '안경 착용 불가': 'Not for glasses wearers',
+      '불가': 'N/A',
+      '약속 시각 10분 전까지 도착하세요. 이 일정은 안경형 시선 측정 장비를 착용하므로 콘택트렌즈를 끼거나 안경 없이 오세요. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': 'Please arrive 10 minutes before your appointment. This session uses a glasses-type eye-tracking device, so wear contact lenses or come without glasses. If you do not feel well, you can change your appointment.',
+      '일정을 바꾸려면 취소한 뒤 다시 신청하세요.': 'To change your time, cancel and apply again.',
+      '참여는 자발적이며 언제든 그만둘 수 있습니다. 수집한 연락처는 연구 자료와 분리해 관리합니다.': 'Participation is voluntary, and you may stop at any time. Contact details are kept separately from research data.',
+      '언어': 'Language', '신청 단계': 'Application steps',
+      '6-DOF 모션 플랫폼 구동 영상': '6-DOF motion platform in operation',
+      '시뮬레이터에 탑승한 참가자 (얼굴 블러 처리)': 'A participant riding in the simulator (face blurred)',
+      'CARLA 도시 맵': 'CARLA city map', 'CARLA 거리': 'CARLA street', 'CARLA 차량': 'CARLA vehicles', 'CARLA 보행자': 'CARLA pedestrians',
+      '날짜': 'Date', '안내받은 코드': 'The code you were given',
+      '이전 달': 'Previous month',
+      '다음 달': 'Next month',
+      // 동적 문구
+      '모든 질문에 답하세요.': 'Please answer all questions.',
+      '이번 연구는 참여 조건에 맞지 않아 신청을 받을 수 없습니다. 관심 가져 주셔서 감사합니다.': 'Sorry, you do not meet the requirements for this study, so we cannot accept your application. Thank you for your interest.',
+      '{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.': 'Choose a date between {range}, then pick a time. Each session takes about {min} minutes.',
+      '{n}자리': '{n} left',
+      '마감': 'Full', '신청 마감': 'Closed', '수강생 전용': 'Course students only', '수강생': 'Students', '신청 불가': 'Unavailable',
+      '코드가 맞지 않습니다.': 'The code is incorrect.',
+      '성명을 입력하세요.': 'Enter your name.',
+      '이메일 주소를 확인하세요.': 'Check your email address.',
+      '성별을 선택하세요.': 'Select your gender.',
+      '선호하는 실험 진행 언어': 'Preferred language for the session', '실험 설명과 설문을 이 언어로 진행합니다.': 'The explanation and questionnaires will be given in this language.', '선호하는 언어를 선택하세요.': 'Select your preferred language.',
+      '전화번호를 확인하세요.': 'Check your phone number.',
+      '동의가 필요합니다.': 'Your agreement is required.',
+      '방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.': 'Someone else just chose this time. Please pick another time.',
+      '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.': 'Sending failed. Please try again in a moment.',
+      '해당 신청 코드를 찾을 수 없습니다.': 'No application found for this code.',
+      '신청이 취소되었습니다.': 'Your application has been cancelled.',
+      '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.': 'This email has already been used to apply. To change your booking, cancel it under "My booking" and apply again.',
+      '요청이 너무 많습니다. 잠시 뒤 다시 시도하세요.': 'Too many requests. Please try again in a moment.',
+      '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.': 'This session is not available. Please choose another.',
+      '입력 내용을 확인하세요.': 'Please check what you entered.'
+    },
+    zh: {
+      '드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청': '申请参与使用驾驶模拟器的自动驾驶车辆界面研究',
+      '주관': '主办',
+      '홍익대학교 국제디자인전문대학원': '弘益大学国际设计专门研究生院',
+      '일정': '日程',
+      '내용': '内容',
+      '자율주행차량 시뮬레이터에 탑승해 시나리오 및 인터페이스를 경험하고 평가하는 실험입니다.': '本实验需要您乘坐自动驾驶车辆模拟器，体验场景和界面并加以评价。',
+      '안내': '说明', '자격': '资格', '정보': '信息', '완료': '完成',
+      '실험 개요': '实验概述',
+      '진행 방식': '进行方式',
+      '시뮬레이터에 탑승한 뒤 설문과 인터뷰를 진행합니다.': '乘坐模拟器后，进行问卷调查和访谈。',
+      '소요 시간': '所需时间',
+      '약 60분': '约60分钟',
+      '장소': '地点',
+      '홍익대학교 서울캠퍼스 제1공학관 K023': '弘益大学首尔校区第一工学馆K023',
+      '네이버 지도': 'Naver 地图',
+      '실험 장소인 홍익대학교가 혼잡하므로 대중교통 이용을 권장드립니다. 자차 이용 시 1인당 1시간 주차권 1매만 제공 가능합니다. (이외 10분당 1,000원)': '弘益大学周边较为拥挤，建议乘坐公共交通。如自驾前来，每人仅提供1张1小时停车券（超出部分每10分钟1,000韩元）。',
+      '대상': '对象',
+      '차량 탑승에 불편함이 없는 만 14세 이상 누구나': '年满14周岁、乘车无不适的任何人',
+      '참고사항': '注意事项',
+      '움직이는 플랫폼이라 멀미나 어지럼이 생길 수 있습니다. 참여를 그만두고 싶으면 언제든 중단할 수 있습니다.': '平台会移动，可能出现晕车或头晕。如想退出，可随时中止参加。',
+      '문의': '咨询',
+      '김태완': 'Taewan Kim',
+      '홍익대학교 국제디자인전문대학원 석사과정': '弘益大学国际设计专门研究生院 硕士研究生',
+      '참고 자료': '参考资料',
+      '6-DOF 모션 플랫폼': '6自由度（6-DOF）运动平台',
+      '가속과 회전 때 차의 움직임을 몸으로 느낍니다.': '加速和转弯时，您能亲身感受车辆的运动。',
+      '시뮬레이터 탑승 모습': '乘坐模拟器的情景',
+      'CARLA는 이 실험의 주행 화면에 쓰는 오픈소스 자율주행 시뮬레이터입니다.': 'CARLA 是本实验用于生成行驶画面的开源自动驾驶模拟器。',
+      '도시': '城市', '거리': '街道', '차량': '车辆', '보행자': '行人',
+      '화면 출처: CARLA 공식 저장소(carla-simulator/carla) 문서 이미지, CC-BY 라이선스.': '画面来源：CARLA 官方仓库（carla-simulator/carla）文档图片，CC-BY 许可。',
+      '공식 소개 영상 보기': '观看官方介绍视频',
+      '참여 신청하기': '报名参加',
+      '참여 가능 여부 확인': '参加资格确认',
+      '아래 답변은 참여 가능 여부 판단과 일정 안내에만 활용됩니다.': '以下答案仅用于判断是否可以参加以及安排日程。',
+      '만 나이를 선택하세요.': '请选择您的周岁年龄。',
+      '만 18세 미만은 신청자 정보 단계에서 보호자 정보와 동의 확인이 필요합니다.': '未满18周岁者需在“报名者信息”步骤填写监护人信息并确认同意。',
+      '만 14~17세': '14至17周岁',
+      '만 18세 이상': '年满18周岁',
+      '보호자 정보 (만 18세 미만)': '监护人信息（未满18周岁）',
+      '보호자 성명': '监护人姓名',
+      '보호자 연락처': '监护人联系方式',
+      '전화번호 또는 이메일': '电话号码或邮箱',
+      '보호자가 이 연구 참여에 동의했습니다.': '监护人已同意我参加本实验。',
+      '보호자 성명을 입력하세요.': '请输入监护人姓名。',
+      '보호자 연락처를 입력하세요.': '请输入监护人联系方式。',
+      '보호자 동의가 필요합니다.': '需要监护人同意。',
+      '예': '是', '아니요': '否',
+      '한국어 또는 영어로 진행하는 설명을 듣고 설문에 답할 수 있습니까?': '您能否用韩语或英语听懂说明并回答问卷？',
+      '다음 중 해당하는 것이 있습니까?': '以下情况中，您是否有符合的？',
+      '1) 어지럼이나 평형에 영향을 주는 질환(전정기관 질환)': '1) 影响眩晕或平衡的疾病（前庭疾病）',
+      '2) 심혈관 질환': '2) 心血管疾病',
+      '3) 임신': '3) 怀孕',
+      '4) 빛 자극으로 인한 발작 경험': '4) 曾因光刺激而发作',
+      '5) 안구 질환': '5) 眼部疾病',
+      '6) 청력 문제': '6) 听力问题',
+      '해당 없음': '均不符合', '해당 있음': '有符合的',
+      '이전': '上一步', '다음': '下一步',
+      '일정 선택': '选择日期与时间',
+      '수업 수강생입니까?': '您是课程学生吗？',
+      '수강생 신청 코드': '课程学生报名码',
+      '코드 확인': '确认代码',
+      '신청자 정보': '报名者信息',
+      '성명': '姓名',
+      '이메일': '电子邮箱',
+      '전화번호': '电话号码',
+      '연락처는 참여 확정 안내 및 당일 연락을 위해 활용됩니다.': '联系方式将用于参加确认通知及当天联系。',
+      '성별': '性别', '남': '男', '여': '女',
+      '평소 시력 교정은 어떤 방법으로 하십니까?': '您平时通过什么方式矫正视力？',
+      '교정 안 함': '不矫正', '콘택트렌즈': '隐形眼镜', '안경': '眼镜',
+      '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': '根据视力矫正方式，可参加的日程可能有所不同。',
+      '안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.': '佩戴眼镜者仅可参加截至{date}的实验。',
+      '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': '我同意为安排日程而收集和使用我的姓名和联系方式。该信息与研究数据分开保管，实验结束后将予以销毁。',
+      '신청 완료': '提交报名',
+      '신청이 접수되었습니다': '报名已受理',
+      '이 화면은 미리보기라서 신청이 저장되지 않았습니다.': '本页面为预览，您的报名未被保存。',
+      '접수 내용을 입력한 이메일로 보냅니다. 몇 분 안에 도착하지 않으면 스팸함을 확인하세요.': '我们会将报名内容发送到您填写的邮箱。如几分钟内未收到，请查看垃圾邮件箱。',
+      '신청 코드': '报名码',
+      '일정 변경이나 취소에 필요합니다. 적어 두세요.': '更改或取消日程时需要，请记下。',
+      '이후 절차': '后续流程',
+      '참여가 확정되면 입력한 이메일로 알립니다.': '参加确定后，将通过邮件告知。',
+      '당일 안내': '当天须知',
+      '약속 시각 10분 전까지 도착하세요. 평소 쓰는 안경이나 렌즈는 그대로 착용하면 됩니다. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': '请在预约时间前10分钟到达。平时佩戴的眼镜或隐形眼镜照常佩戴即可。如果身体不适，可以更改日程。',
+      '실험 신청/변경': '报名查询/更改',
+      '이 신청 취소': '取消此报名',
+      '조회': '查询',
+      '신청 코드와 이메일이 일치하는 신청을 찾을 수 없습니다.': '未找到与该报名码和邮箱匹配的报名。',
+      '닫기': '关闭',
+      '시선 측정 포함': '含视线测量',
+      '안경 착용 불가': '眼镜佩戴者不可',
+      '불가': '不可',
+      '약속 시각 10분 전까지 도착하세요. 이 일정은 안경형 시선 측정 장비를 착용하므로 콘택트렌즈를 끼거나 안경 없이 오세요. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': '请在预约时间前10分钟到达。本日程需佩戴眼镜式视线测量设备，请佩戴隐形眼镜或不戴眼镜前来。如果身体不适，可以更改日程。',
+      '일정을 바꾸려면 취소한 뒤 다시 신청하세요.': '如需更改时间，请先取消再重新报名。',
+      '참여는 자발적이며 언제든 그만둘 수 있습니다. 수집한 연락처는 연구 자료와 분리해 관리합니다.': '参加完全自愿，您可随时退出。所收集的联系方式与研究数据分开管理。',
+      '언어': '语言', '신청 단계': '报名步骤',
+      '6-DOF 모션 플랫폼 구동 영상': '6自由度运动平台运行视频',
+      '시뮬레이터에 탑승한 참가자 (얼굴 블러 처리)': '乘坐模拟器的参加者（面部已模糊处理）',
+      'CARLA 도시 맵': 'CARLA 城市地图', 'CARLA 거리': 'CARLA 街道', 'CARLA 차량': 'CARLA 车辆', 'CARLA 보행자': 'CARLA 行人',
+      '날짜': '日期', '안내받은 코드': '您收到的代码',
+      '이전 달': '上个月',
+      '다음 달': '下个月',
+      '모든 질문에 답하세요.': '请回答所有问题。',
+      '이번 연구는 참여 조건에 맞지 않아 신청을 받을 수 없습니다. 관심 가져 주셔서 감사합니다.': '很抱歉，您不符合本实验的参加条件，无法受理报名。感谢您的关注。',
+      '{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.': '请在 {range} 之间选择日期，再选择时间。每次约 {min} 分钟。',
+      '{n}자리': '余{n}位',
+      '마감': '已满', '신청 마감': '报名截止', '수강생 전용': '仅限课程学生', '수강생': '课程学生', '신청 불가': '不可报名',
+      '코드가 맞지 않습니다.': '代码不正确。',
+      '성명을 입력하세요.': '请输入姓名。',
+      '이메일 주소를 확인하세요.': '请检查邮箱地址。',
+      '성별을 선택하세요.': '请选择性别。',
+      '선호하는 실험 진행 언어': '偏好的实验进行语言', '실험 설명과 설문을 이 언어로 진행합니다.': '实验说明和问卷将以该语言进行。', '선호하는 언어를 선택하세요.': '请选择偏好的语言。',
+      '전화번호를 확인하세요.': '请检查电话号码。',
+      '동의가 필요합니다.': '需要您的同意。',
+      '방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.': '刚刚有其他报名者选择了该时间，请另选时间。',
+      '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.': '发送失败，请稍后重试。',
+      '해당 신청 코드를 찾을 수 없습니다.': '未找到该报名码。',
+      '신청이 취소되었습니다.': '报名已取消。',
+      '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.': '该邮箱已报名。如需更改，请在“报名查询/更改”中取消后重新报名。',
+      '요청이 너무 많습니다. 잠시 뒤 다시 시도하세요.': '请求过多，请稍后重试。',
+      '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.': '无法报名所选日程，请另选日程。',
+      '입력 내용을 확인하세요.': '请检查填写内容。'
+    }
+  };
+  var LANG = 'ko';
+  var HTML_LANG = { ko: 'ko', en: 'en', zh: 'zh-CN' };
+  var LANG_STORE = 'hav_recruit_lang';
+  var WD_NAMES = {
+    ko: ['일', '월', '화', '수', '목', '금', '토'],
+    en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    zh: ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+  };
+  var MON_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function t(ko) { var d = LANG === 'ko' ? null : T[LANG]; return d && d[ko] !== undefined ? d[ko] : ko; }
+  function tf(ko, v) { return t(ko).replace(/\{(\w+)\}/g, function (m, k) { return v && v[k] !== undefined ? v[k] : m; }); }
+
+  /* ───────── 유틸 ───────── */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var ymd = function (d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+  var parse = function (s) { var p = s.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); };
+  var toMin = function (h) { var p = h.split(':').map(Number); return p[0] * 60 + p[1]; };
+  var fmt = function (m) { return pad(Math.floor(m / 60)) + ':' + pad(m % 60); };
+  var md = function (s) {
+    var d = parse(s), w = WD_NAMES[LANG][d.getDay()], m = d.getMonth() + 1, n = d.getDate();
+    return LANG === 'en' ? w + ', ' + MON_EN[m - 1] + ' ' + n : LANG === 'zh' ? m + '月' + n + '日（' + w + '）' : m + '월 ' + n + '일 (' + w + ')';
+  };
+  var dot = function (s) {
+    var d = parse(s), w = WD_NAMES[LANG][d.getDay()], b = d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate());
+    return LANG === 'en' ? b + ' (' + w + ')' : LANG === 'zh' ? b + '（' + w + '）' : b + '(' + w + ')';
+  };
+  var mdShort = function (s) { var d = parse(s); return (d.getMonth() + 1) + '.' + d.getDate(); };
+
+  function load() { try { return JSON.parse(localStorage.getItem(STORE) || '[]'); } catch (e) { return []; } }
+  function save(a) { try { localStorage.setItem(STORE, JSON.stringify(a)); } catch (e) {} }
+
+  /* ───────── 칸 생성 ───────── */
+  function studyOf(day, wd) {
+    var r = CFG.studyRules.filter(function (x) {
+      return (!x.weekdays || x.weekdays.indexOf(wd) >= 0) && (!x.from || day >= x.from) && (!x.to || day <= x.to);
+    })[0];
+    return r ? r.study : '1-1';
+  }
+  function buildSlots() {
+    var out = [], s = parse(CFG.start), e = parse(CFG.end);
+    for (var d = new Date(s); d <= e; d.setDate(d.getDate() + 1)) {
+      var wd = d.getDay();
+      if (CFG.openWeekdays.indexOf(wd) < 0) continue;
+      var day = ymd(d), hard = [];
+      var blocks = CFG.blocks.filter(function (b) { return b.weekday === wd; });
+      blocks.forEach(function (b) {
+        var a = toMin(b.from), z = toMin(b.to);
+        hard.push([a, z]);
+        if (b.kind === 'class') {
+          for (var t = a; t + CFG.pitchMin <= z; t += CFG.pitchMin)
+            out.push({ id: day + '_' + fmt(t).replace(':', ''), day: day, start: t, end: t + CFG.sessionMin, kind: 'class', study: studyOf(day, wd) });
+        }
+      });
+      var t2 = toMin(CFG.dayStart), last = toMin(CFG.dayEndBy[wd] || CFG.dayEnd);
+      while (t2 + CFG.pitchMin <= last) {
+        var hit = hard.filter(function (h) { return t2 < h[1] && t2 + CFG.pitchMin > h[0]; })[0];
+        if (hit) { t2 = hit[1]; continue; }
+        out.push({ id: day + '_' + fmt(t2).replace(':', ''), day: day, start: t2, end: t2 + CFG.sessionMin, kind: 'open', study: studyOf(day, wd) });
+        t2 += CFG.pitchMin;
+      }
+    }
+    return out.sort(function (a, b) { return a.day < b.day ? -1 : a.day > b.day ? 1 : a.start - b.start; });
+  }
+  var SLOTS = buildSlots();
+  // 안경 착용자가 참여할 수 있는 마지막 날 = 1-1 칸이 있는 마지막 날
+  function glassesLastDay() {
+    var d = SLOTS.filter(function (s) { return s.kind === 'open' && s.study !== '1-2'; }).map(function (s) { return s.day; });
+    return d.sort().pop();
+  }
+  function dateLong(s) {
+    var d = parse(s), m = d.getMonth() + 1, n = d.getDate();
+    return LANG === 'en' ? MON_FULL[m - 1] + ' ' + n : LANG === 'zh' ? m + '月' + n + '日' : m + '월 ' + n + '일';
+  }
+  function updateGlassesNote() {
+    var r = document.querySelector('input[name=vision]:checked'), box = $('#glassesNote'), on = !!r && r.value === 'glasses';
+    box.hidden = !on;
+    box.textContent = on ? tf('안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.', { date: dateLong(glassesLastDay()) }) : '';
+  }
+
+  var state = { step: 1, day: null, slot: null, vision: '', age: '', monthIdx: 0 };
+
+  /* ───────── 서버 연동 ─────────
+   * 같은 주소의 서버(server.py)가 응답하면 일정·마감·신청 저장을 서버에 맡긴다.
+   * 응답이 없으면(파일로 열었거나 미리보기) 이 브라우저에만 저장하고 상단에 안내를 띄운다. */
+  var BACK = false, MAIL = false, TAKEN = [], LATE = [];
+  function api(path, body) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+    var name = path.replace(/^api\//, ''), url = path, opt = { cache: 'no-store', signal: ctl ? ctl.signal : undefined };
+    if (CFG.api) {
+      // Apps Script 웹 앱: 사전 요청(preflight)이 없도록 글자(text/plain)로 보낸다. 동작은 action 으로 구분한다
+      if (body) {
+        opt.method = 'POST'; opt.headers = { 'Content-Type': 'text/plain;charset=utf-8' };
+        opt.body = JSON.stringify(Object.assign({ action: name }, body)); url = CFG.api;
+      } else { url = CFG.api + (CFG.api.indexOf('?') >= 0 ? '&' : '?') + 'action=' + encodeURIComponent(name) + '&_=' + Date.now(); }
+    } else {
+      opt.method = body ? 'POST' : 'GET'; opt.headers = body ? { 'Content-Type': 'application/json' } : {};
+      opt.body = body ? JSON.stringify(body) : undefined;
+    }
+    return fetch(url, opt).then(function (r) {
+      clearTimeout(timer);
+      return r.json().catch(function () { return { ok: false, error: 'bad_response' }; }).then(function (j) { j.status = r.status; return j; });
+    });
+  }
+  function loadServerSlots() {
+    return api('api/slots').then(function (d) {
+      if (!d.ok) throw new Error('no backend');
+      BACK = true; MAIL = !!d.mail; SLOTS = d.slots; TAKEN = d.taken; LATE = d.late;
+    });
+  }
+
+  function startDate(sl) { var d = parse(sl.day); d.setMinutes(sl.start); return d; }
+  function tooLate(sl) { return startDate(sl) - Date.now() < CFG.minLeadHours * 3600e3; }
+  function takenIds() { return BACK ? TAKEN : load().map(function (b) { return b.slotId; }); }
+  function slotState(sl) {
+    if (takenIds().indexOf(sl.id) >= 0) return 'booked';
+    if (BACK ? LATE.indexOf(sl.id) >= 0 : tooLate(sl)) return 'late';
+    if (sl.study === '1-2' && state.vision === 'glasses') return 'noeye';
+    if (sl.kind === 'class') return 'booked';   // 수강생용 칸은 신청자에게 '마감'
+    return 'free';
+  }
+  function freeCount(day) {
+    return SLOTS.filter(function (s) { return s.day === day && slotState(s) === 'free'; }).length;
+  }
+
+  /* ───────── 단계 표시 ───────── */
+  var STEP_NAMES = ['안내', '자격', '일정', '정보', '완료'];
+  function go(n, keepScroll) {
+    state.step = n;
+    for (var i = 1; i <= 5; i++) $('#s' + i).hidden = (i !== n);
+    $('#media').hidden = (n !== 1);
+    $('#cta').hidden = (n !== 1);
+    $('#contactBox').hidden = (n !== 1 && n !== 5);
+    if (n === 1) watchClips();
+    $('#steps').innerHTML = STEP_NAMES.map(function (nm, i) {
+      var c = i + 1 === n ? 'on' : i + 1 < n ? 'done' : '';
+      return '<li class="' + c + '"' + (i + 1 === n ? ' aria-current="step"' : '') + '>' + t(nm) + '</li>';
+    }).join('');
+    if (n === 3) {
+      if (!keepScroll) state.monthIdx = defaultMonthIdx();
+      renderCal();
+      if (BACK && !keepScroll) loadServerSlots().then(function () { if (state.step === 3) renderCal(); }, function () {});
+    }
+    if (n === 4) { $('#picked').textContent = state.slot ? slotLabel(state.slot) : ''; $('#guardianBox').hidden = state.age !== 'm'; }
+    if (n === 5 && state.slot) {
+      $('#doneSlot').textContent = slotLabel(state.slot);
+      $('#previewNote').hidden = BACK;
+      $('#mailNote').hidden = !(BACK && MAIL);
+      $('#dayNote11').hidden = state.slot.study === '1-2';
+      $('#dayNote12').hidden = state.slot.study !== '1-2';
+    }
+    if (!keepScroll) window.scrollTo({ top: 0 });
+  }
+  function slotLabel(sl) { return md(sl.day) + ' ' + fmt(sl.start) + ' ~ ' + fmt(sl.end); }
+
+  /* ───────── 달력 (달별, 일요일 시작) ───────── */
+  var MON_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function monthKeys() {
+    var a = parse(CFG.start), b = parse(CFG.end), out = [], y = a.getFullYear(), m = a.getMonth();
+    while (y < b.getFullYear() || (y === b.getFullYear() && m <= b.getMonth())) { out.push(y + '-' + pad(m + 1)); m++; if (m > 11) { m = 0; y++; } }
+    return out;
+  }
+  function monthTitle(key) {
+    var y = Number(key.slice(0, 4)), m = Number(key.slice(5));
+    return LANG === 'en' ? MON_FULL[m - 1] + ' ' + y : LANG === 'zh' ? y + '年' + m + '月' : y + '년 ' + m + '월';
+  }
+  function defaultMonthIdx() {
+    var keys = monthKeys();
+    if (state.day) { var i = keys.indexOf(state.day.slice(0, 7)); if (i >= 0) return i; }
+    for (var j = 0; j < keys.length; j++) {
+      if (SLOTS.some(function (s) { return s.day.slice(0, 7) === keys[j] && slotState(s) === 'free'; })) return j;
+    }
+    return 0;
+  }
+  function renderCal() {
+    var keys = monthKeys();
+    if (state.day && !freeCount(state.day)) { state.day = null; state.slot = null; }   // 지난 날짜·마감된 날짜는 선택 상태로 남기지 않는다
+    state.monthIdx = Math.max(0, Math.min(keys.length - 1, state.monthIdx));
+    var key = keys[state.monthIdx], y = Number(key.slice(0, 4)), mo = Number(key.slice(5)) - 1;
+    var first = parse(CFG.start), last = parse(CFG.end);
+    $('#calHead').innerHTML =
+      '<button type="button" data-nav="-1" aria-label="' + t('이전 달') + '"' + (state.monthIdx === 0 ? ' disabled' : '') + '>‹</button>' +
+      '<b>' + monthTitle(key) + '</b>' +
+      '<button type="button" data-nav="1" aria-label="' + t('다음 달') + '"' + (state.monthIdx === keys.length - 1 ? ' disabled' : '') + '>›</button>';
+    var html = [0, 1, 2, 3, 4, 5, 6].map(function (i) { return '<div class="wd">' + WD_NAMES[LANG][i] + '</div>'; }).join('');
+    for (var b = 0, lead = new Date(y, mo, 1).getDay(); b < lead; b++) html += '<span></span>';
+    for (var day = 1, dim = new Date(y, mo + 1, 0).getDate(); day <= dim; day++) {
+      var d = new Date(y, mo, day), k = ymd(d), inR = d >= first && d <= last, n = inR ? freeCount(k) : 0;
+      var sel = state.day === k ? ' sel' : '';
+      var ds = inR ? SLOTS.filter(function (s) { return s.day === k; }) : [];
+      var sub = !inR ? '' : n > 0 ? tf('{n}자리', { n: n }) : (ds.length ? (ds.every(function (s) { return slotState(s) === 'noeye'; }) ? t('불가') : t('마감')) : '');
+      html += '<button type="button" class="day' + sel + '" data-day="' + k + '"' + (n ? '' : ' disabled') +
+        ' aria-label="' + md(k) + (n ? ', ' + tf('{n}자리', { n: n }) : ', ' + t('신청 불가')) + '">' + day + '<small>' + sub + '</small></button>';
+    }
+    $('#cal').innerHTML = html;
+    $('#s3hint').textContent = tf('{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.', { range: mdShort(CFG.start) + ' ~ ' + mdShort(CFG.end), min: CFG.sessionMin }) + (state.vision === 'glasses' ? ' ' + tf('안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.', { date: dateLong(glassesLastDay()) }) : '');
+    if (state.slot && slotState(state.slot) !== 'free') state.slot = null;
+    renderSlots();
+  }
+  $('#calHead').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-nav]'); if (!b || b.disabled) return;
+    state.monthIdx += Number(b.dataset.nav); renderCal();
+  });
+  function renderSlots() {
+    var box = $('#slots');
+    if (!state.day) { box.innerHTML = ''; $('#next3').disabled = true; return; }
+    var list = SLOTS.filter(function (s) { return s.day === state.day; });
+    box.innerHTML = '<div style="font-weight:600">' + md(state.day) + '</div>' + list.map(function (s) {
+      var st = slotState(s), sel = state.slot && state.slot.id === s.id ? ' sel' : '';
+      var tag = st === 'booked' ? t('마감') : st === 'late' ? t('신청 마감') : st === 'noeye' ? t('안경 착용 불가') : (s.study === '1-2' ? t('시선 측정 포함') : '');
+      return '<button type="button" class="slot' + sel + '" data-slot="' + s.id + '"' + (st === 'free' ? '' : ' disabled') + '><span>' +
+        fmt(s.start) + ' ~ ' + fmt(s.end) + '</span>' + (tag ? '<span class="tag">' + tag + '</span>' : '') + '</button>';
+    }).join('');
+    $('#next3').disabled = !state.slot;
+  }
+  $('#cal').addEventListener('click', function (e) {
+    var b = e.target.closest('.day'); if (!b || b.disabled) return;
+    state.day = b.dataset.day; state.slot = null; renderCal();
+  });
+  $('#slots').addEventListener('click', function (e) {
+    var b = e.target.closest('.slot'); if (!b || b.disabled) return;
+    state.slot = SLOTS.filter(function (s) { return s.id === b.dataset.slot; })[0];
+    renderSlots();
+  });
+
+  /* ───────── 단계 이동 ───────── */
+  $$('input[name=vision]').forEach(function (r) { r.addEventListener('change', updateGlassesNote); });
+  $('#start').addEventListener('click', function () { go(2); });
+  $$('[data-go]').forEach(function (b) { b.addEventListener('click', function () { go(Number(b.dataset.go)); }); });
+
+  $('#next2').addEventListener('click', function () {
+    var v = function (n) { var r = document.querySelector('input[name=' + n + ']:checked'); return r && r.value; };
+    var e = $('#e2');
+    if (!v('age') || !v('lang') || !v('prefLang') || !v('vision') || !v('health')) { e.textContent = t('모든 질문에 답하세요.'); return; }
+    if (v('lang') !== 'y' || v('health') !== 'n') {
+      e.textContent = t('이번 연구는 참여 조건에 맞지 않아 신청을 받을 수 없습니다. 관심 가져 주셔서 감사합니다.');
+      return;
+    }
+    e.textContent = ''; state.vision = v('vision'); state.age = v('age'); go(3);
+  });
+  $('#next3').addEventListener('click', function () { if (state.slot) go(4); });
+
+  /* ───────── 제출 ───────── */
+  function code() {
+    var a = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789', s = 'R';
+    for (var i = 0; i < 5; i++) s += a[Math.floor(Math.random() * a.length)];
+    return s;
+  }
+  function checked(n) { var r = document.querySelector('input[name=' + n + ']:checked'); return r ? r.value : ''; }
+
+  $('#submit').addEventListener('click', function () {
+    var f = {
+      name: $('#fName').value.trim(), email: $('#fEmail').value.trim(), phone: $('#fPhone').value.trim(),
+      gender: checked('gender'), prefLang: checked('prefLang'), consent: $('#fConsent').checked
+    };
+    var bad = false, set = function (id, m) { $(id).textContent = m || ''; if (m) bad = true; };
+    set('#eName', f.name ? '' : t('성명을 입력하세요.'));
+    set('#eEmail', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email) ? '' : t('이메일 주소를 확인하세요.'));
+    set('#eGender', f.gender ? '' : t('성별을 선택하세요.'));
+    set('#ePhone', /^[0-9+\-() ]{8,30}$/.test(f.phone) ? '' : t('전화번호를 확인하세요.'));
+    set('#eConsent', f.consent ? '' : t('동의가 필요합니다.'));
+    var minor = state.age === 'm', g = { name: $('#gName').value.trim(), contact: $('#gContact').value.trim(), consent: $('#gConsent').checked };
+    set('#eGName', minor && !g.name ? t('보호자 성명을 입력하세요.') : '');
+    set('#eGContact', minor && !g.contact ? t('보호자 연락처를 입력하세요.') : '');
+    set('#eGConsent', minor && !g.consent ? t('보호자 동의가 필요합니다.') : '');
+    if (bad) return;
+    if (takenIds().indexOf(state.slot.id) >= 0) { $('#e4').textContent = t('방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.'); state.slot = null; go(3); return; }
+    $('#e4').textContent = '';
+    var rec = {
+      code: code(), slotId: state.slot.id, slot: slotLabel(state.slot),
+      lang: HTML_LANG[LANG], prefLang: f.prefLang, name: f.name, email: f.email, phone: f.phone, gender: f.gender, ageBand: state.age === 'm' ? '14-17' : '18+', guardian: state.age === 'm' ? g : null, vision: state.vision, study: state.slot.study, createdAt: new Date().toISOString()
+    };
+    var btn = $('#submit'); btn.disabled = true;
+    send(rec).then(function (res) {
+      btn.disabled = false;
+      if (res.ok) { $('#doneCode').textContent = res.code; MAIL = !!res.mail; go(5); return; }
+      var msg = {
+        slot_taken: '방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.',
+        slot_invalid: '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.', slot_late: '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.',
+        glasses_not_allowed: '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.',
+        duplicate: '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.',
+        rate_limited: '요청이 너무 많습니다. 잠시 뒤 다시 시도하세요.', invalid: '입력 내용을 확인하세요.'
+      }[res.error] || '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.';
+      $('#e4').textContent = t(msg);
+      if (res.error === 'slot_taken' || res.error === 'slot_invalid' || res.error === 'slot_late' || res.error === 'glasses_not_allowed') {
+        state.slot = null;
+        loadServerSlots().then(function () { go(3); }, function () { go(3); });
+        $('#e4').textContent = t(msg);
+      }
+    }, function () { btn.disabled = false; $('#e4').textContent = t('전송에 실패했습니다. 잠시 뒤 다시 시도하세요.'); });
+  });
+
+  function send(rec) {
+    if (!BACK) { var a = load(); a.push(rec); save(a); return Promise.resolve({ ok: true, code: rec.code }); }
+    return api('api/book', {
+      slotId: rec.slotId, vision: rec.vision, name: rec.name, email: rec.email, phone: rec.phone, gender: rec.gender,
+      consent: true, ageBand: rec.ageBand, guardian: rec.guardian, lang: rec.lang, prefLang: rec.prefLang
+    });
+  }
+
+  /* ───────── 실험 신청/변경 (조회 후 취소) ───────── */
+  var found = null;
+  function openSheet() {
+    $('#cCode').value = ''; $('#cEmail').value = ''; $('#eCancel').textContent = ''; $('#found').hidden = true; found = null;
+    $('#manageSheet').hidden = false; $('#cCode').focus();
+  }
+  function closeSheet() { $('#manageSheet').hidden = true; $('#manageOpen').focus(); }
+  $('#manageOpen').addEventListener('click', openSheet);
+  $('#mClose').addEventListener('click', closeSheet);
+  $('#manageSheet').addEventListener('click', function (e) { if (e.target === this) closeSheet(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('#manageSheet').hidden) closeSheet(); });
+  $('#mFind').addEventListener('click', function () {
+    var c = $('#cCode').value.trim().toUpperCase(), m = $('#cEmail').value.trim().toLowerCase();
+    var show = function () {
+      $('#eCancel').textContent = found ? '' : t('신청 코드와 이메일이 일치하는 신청을 찾을 수 없습니다.');
+      $('#found').hidden = !found;
+      if (found) $('#foundSlot').textContent = found.slot;
+    };
+    if (!BACK) {
+      found = load().filter(function (b) { return b.code === c && String(b.email).toLowerCase() === m; })[0] || null;
+      return show();
+    }
+    api('api/lookup', { code: c, email: m }).then(function (res) {
+      var sl = res.ok ? SLOTS.filter(function (x) { return x.id === res.slotId; })[0] : null;
+      found = sl ? { code: c, email: m, slot: slotLabel(sl) } : null;
+      if (res.error === 'rate_limited') { $('#eCancel').textContent = t('요청이 너무 많습니다. 잠시 뒤 다시 시도하세요.'); $('#found').hidden = true; return; }
+      show();
+    }, function () { $('#eCancel').textContent = t('전송에 실패했습니다. 잠시 뒤 다시 시도하세요.'); });
+  });
+  $('#doCancel').addEventListener('click', function () {
+    if (!found) return;
+    var done = function () { $('#found').hidden = true; $('#eCancel').textContent = t('신청이 취소되었습니다.'); found = null; };
+    if (!BACK) { save(load().filter(function (b) { return b.code !== found.code; })); return done(); }
+    api('api/cancel', { code: found.code, email: found.email }).then(function (res) {
+      if (res.ok) { loadServerSlots().then(function () {}, function () {}); done(); } else { $('#eCancel').textContent = t('전송에 실패했습니다. 잠시 뒤 다시 시도하세요.'); }
+    }, function () { $('#eCancel').textContent = t('전송에 실패했습니다. 잠시 뒤 다시 시도하세요.'); });
+  });
+
+
+  /* ───────── 영상: 화면에 보일 때만 재생, 동작 줄이기 설정이면 직접 재생 ───────── */
+  var clipIO = null;
+  function watchClips() {
+    var vids = $$('#media video');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (calm || !('IntersectionObserver' in window)) { vids.forEach(function (v) { v.controls = true; }); return; }
+    if (!clipIO) {
+      clipIO = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
+        });
+      }, { threshold: 0.35 });
+      vids.forEach(function (v) { clipIO.observe(v); });
+    }
+  }
+
+  function setPeriod() {
+    $('#period').innerHTML = '<span class="nw">' + dot(CFG.start) + '</span> - <span class="nw">' + dot(CFG.end) + '</span>';
+  }
+
+  /* ───────── 언어 전환 (KR / EN / CN) ───────── */
+  var origText = new WeakMap(), origAttr = new WeakMap();
+  var ATTRS = ['alt', 'aria-label', 'placeholder'];
+  function keyOf(v) { return v.replace(/\s+/g, ' ').trim(); }
+  function applyStatic() {
+    var d = LANG === 'ko' ? null : T[LANG];
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode;
+        return /^(SCRIPT|STYLE)$/.test(p.nodeName) || (p.closest && p.closest('[data-dyn], .err')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var n;
+    while ((n = w.nextNode())) {
+      if (!origText.has(n)) origText.set(n, n.nodeValue);
+      var raw = origText.get(n), k = keyOf(raw);
+      if (!k) continue;
+      var tr = d ? d[k] : undefined;
+      if (tr !== undefined) { var m = raw.match(/^(\s*)[\s\S]*?(\s*)$/); n.nodeValue = m[1] + tr + m[2]; } else n.nodeValue = raw;
+    }
+    $$('[alt],[aria-label],[placeholder]').forEach(function (el) {
+      var o = origAttr.get(el) || {};
+      ATTRS.forEach(function (a) {
+        if (!el.hasAttribute(a)) return;
+        if (o[a] === undefined) o[a] = el.getAttribute(a);
+        var tr = d ? d[keyOf(o[a])] : undefined;
+        el.setAttribute(a, tr !== undefined ? tr : o[a]);
+      });
+      origAttr.set(el, o);
+    });
+  }
+  function setLang(l, silent) {
+    if (!T[l] && l !== 'ko') return;
+    LANG = l;
+    document.documentElement.lang = HTML_LANG[l];
+    $$('.langbar button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false'); });
+    $$('.err').forEach(function (e) { e.textContent = ''; });
+    applyStatic();
+    setPeriod();
+    document.title = t('드라이빙 시뮬레이터를 활용한 자율주행차량 인터페이스 리서치 참여 신청');
+    updateGlassesNote();
+    go(state.step, true);
+    if (!silent) { try { localStorage.setItem(LANG_STORE, l); } catch (e) {} }
+  }
+  $$('.langbar button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+
+  /* ───────── 시작 ───────── */
+  setPeriod();
+  go(1);
+  loadServerSlots().then(function () { go(state.step, true); }, function () {});
+  try { var saved = localStorage.getItem(LANG_STORE); if (saved && saved !== 'ko') setLang(saved, true); } catch (e) {}
+})();
+</script>
+</body>
+</html>
