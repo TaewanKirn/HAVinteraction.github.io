@@ -550,6 +550,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '동의가 필요합니다.': 'Your agreement is required.',
       '방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.': 'Someone else just chose this time. Please pick another time.',
       '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.': 'Sending failed. Please try again in a moment.',
+      '신청이 접수되지 않았습니다. 잠시 뒤 다시 신청해 주세요.': 'Your application was not received. Please apply again in a moment.',
       '해당 신청 코드를 찾을 수 없습니다.': 'No application found for this code.',
       '신청이 취소되었습니다.': 'Your application has been cancelled.',
       '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.': 'This email has already been used to apply. To change your booking, cancel it under "My booking" and apply again.',
@@ -672,6 +673,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '동의가 필요합니다.': '需要您的同意。',
       '방금 다른 신청자가 이 시간을 선택했습니다. 다른 시간을 고르세요.': '刚刚有其他报名者选择了该时间，请另选时间。',
       '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.': '发送失败，请稍后重试。',
+      '신청이 접수되지 않았습니다. 잠시 뒤 다시 신청해 주세요.': '您的报名未被受理，请稍后重新报名。',
       '해당 신청 코드를 찾을 수 없습니다.': '未找到该报名码。',
       '신청이 취소되었습니다.': '报名已取消。',
       '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.': '该邮箱已报名。如需更改，请在“报名查询/更改”中取消后重新报名。',
@@ -968,14 +970,14 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
         glasses_not_allowed: '선택한 일정으로는 신청할 수 없습니다. 다른 일정을 선택하세요.',
         duplicate: '이미 신청한 이메일입니다. 변경하려면 "실험 신청/변경"에서 취소한 뒤 다시 신청하세요.',
         rate_limited: '요청이 너무 많습니다. 잠시 뒤 다시 시도하세요.', invalid: '입력 내용을 확인하세요.'
-      }[res.error] || '전송에 실패했습니다. 잠시 뒤 다시 시도하세요.';
+      }[res.error] || '신청이 접수되지 않았습니다. 잠시 뒤 다시 신청해 주세요.';
       $('#e4').textContent = t(msg);
       if (res.error === 'slot_taken' || res.error === 'slot_invalid' || res.error === 'slot_late' || res.error === 'glasses_not_allowed') {
         state.slot = null;
         loadServerSlots().then(function () { go(3); }, function () { go(3); });
         $('#e4').textContent = t(msg);
       }
-    }, function () { btn.disabled = false; $('#e4').textContent = t('전송에 실패했습니다. 잠시 뒤 다시 시도하세요.'); });
+    }, function () { btn.disabled = false; $('#e4').textContent = t('신청이 접수되지 않았습니다. 잠시 뒤 다시 신청해 주세요.'); });
   });
 
   function send(rec) {
