@@ -314,6 +314,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
   <section id="s3" class="card" hidden aria-labelledby="h-s3">
     <h2 id="h-s3">일정 선택</h2>
     <p class="hint" id="s3hint" data-dyn></p><!-- 문구는 스크립트가 채운다 -->
+    <p class="hint" id="s3study" data-dyn style="white-space:pre-line"></p>
 
     <div class="calhead" id="calHead" data-dyn></div>
     <div class="cal" id="cal" data-dyn role="group" aria-label="날짜"></div>
@@ -409,6 +410,10 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     start: '2026-10-14', end: '2026-11-11',
     dayStart: '10:00', dayEnd: '20:00',
     dayEndBy: { 0: '21:00' },   // 요일별 종료 시각(0=일)
+    extraSlots: [                // 간격 계산과 별개로 추가하는 평일 저녁 칸
+      { weekdays: [1, 2, 4, 5], start: '19:00' }, { weekdays: [1, 2, 4, 5], start: '20:10' },   // 월·화·목·금 19:00–20:00, 20:10–21:10
+      { weekdays: [3], start: '19:30' }, { weekdays: [3], start: '20:45' }                      // 수 19:30–20:30, 20:45–21:45
+    ],
     sessionMin: 60,            // 참가자가 머무는 시간
     pitchMin: 90,              // 다음 칸까지의 간격 (세션 + 장비 리셋·정리)
     minLeadHours: 24,          // 시작 시각 이 시간 전까지 신청 가능
@@ -420,7 +425,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     // Study 구분: 위에서부터 처음 맞는 규칙이 적용되고, 없으면 '1-1'. 1-2(시선 측정) 칸은 안경 착용자가 선택할 수 없다.
     // 규칙 키: weekdays(0=일…6=토), from, to(YYYY-MM-DD)
     studyRules: [ { to: '2026-10-27', study: '1-1' }, { from: '2026-10-28', study: '1-2' } ],
-    api: 'https://script.google.com/macros/s/AKfycbwmeqWan_elRADYHgUkLRRazsu9ZINnp6YcqXlG1No8DBS94QdrTy2aL35ASJnBUFU1kw/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
+    api: 'https://script.google.com/macros/s/AKfycbyOylj-TsX5CjuuPD2t2w9PUze86P8kQxvVkddrM2pFd5AharGl7iF8Zo6JOXpt2Jy_dw/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
   };
   // 이 값들은 서버가 없을 때(미리보기)만 쓴다. 서버가 있으면 서버의 schedule.json 이 일정을 정한다.
   var STORE = 'hav_recruit_draft_bookings';
@@ -531,6 +536,8 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       // 동적 문구
       '모든 질문에 답하세요.': 'Please answer all questions.',
       '이번 연구는 참여 조건에 맞지 않아 신청을 받을 수 없습니다. 관심 가져 주셔서 감사합니다.': 'Sorry, you do not meet the requirements for this study, so we cannot accept your application. Thank you for your interest.',
+      '실험 1 (~{d1}): 일반 주행 실험': 'Study 1 (until {d1}): standard driving experiment',
+      '실험 2 ({d2}~): 시선 추적(아이트래킹) 실험': 'Study 2 (from {d2}): eye-tracking experiment',
       '{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.': 'Choose a date between {range}, then pick a time. Each session takes about {min} minutes.',
       '{n}자리': '{n} left',
       '마감': 'Full', '신청 마감': 'Closed', '수강생 전용': 'Course students only', '수강생': 'Students', '신청 불가': 'Unavailable',
@@ -651,6 +658,8 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '다음 달': '下个月',
       '모든 질문에 답하세요.': '请回答所有问题。',
       '이번 연구는 참여 조건에 맞지 않아 신청을 받을 수 없습니다. 관심 가져 주셔서 감사합니다.': '很抱歉，您不符合本实验的参加条件，无法受理报名。感谢您的关注。',
+      '실험 1 (~{d1}): 일반 주행 실험': '实验 1（至 {d1}）：常规驾驶实验',
+      '실험 2 ({d2}~): 시선 추적(아이트래킹) 실험': '实验 2（{d2} 起）：视线追踪（眼动）实验',
       '{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.': '请在 {range} 之间选择日期，再选择时间。每次约 {min} 分钟。',
       '{n}자리': '余{n}位',
       '마감': '已满', '신청 마감': '报名截止', '수강생 전용': '仅限课程学生', '수강생': '课程学生', '신청 불가': '不可报名',
@@ -733,6 +742,9 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
         out.push({ id: day + '_' + fmt(t2).replace(':', ''), day: day, start: t2, end: t2 + CFG.sessionMin, kind: 'open', study: studyOf(day, wd) });
         t2 += CFG.pitchMin;
       }
+      CFG.extraSlots.forEach(function (x) {
+        if (x.weekdays.indexOf(wd) >= 0) { var st = toMin(x.start); out.push({ id: day + '_' + fmt(st).replace(':', ''), day: day, start: st, end: st + CFG.sessionMin, kind: 'open', study: studyOf(day, wd) }); }
+      });
     }
     return out.sort(function (a, b) { return a.day < b.day ? -1 : a.day > b.day ? 1 : a.start - b.start; });
   }
@@ -868,6 +880,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
         ' aria-label="' + md(k) + (n ? ', ' + tf('{n}자리', { n: n }) : ', ' + t('신청 불가')) + '">' + day + '<small>' + sub + '</small></button>';
     }
     $('#cal').innerHTML = html;
+    $('#s3study').textContent = tf('실험 1 (~{d1}): 일반 주행 실험', { d1: mdShort(CFG.studyRules[0].to) }) + '\n' + tf('실험 2 ({d2}~): 시선 추적(아이트래킹) 실험', { d2: mdShort(CFG.studyRules[1].from) });
     $('#s3hint').textContent = tf('{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.', { range: mdShort(CFG.start) + ' ~ ' + mdShort(CFG.end), min: CFG.sessionMin }) + (state.vision === 'glasses' ? ' ' + tf('안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.', { date: dateLong(glassesLastDay()) }) : '');
     if (state.slot && slotState(state.slot) !== 'free') state.slot = null;
     renderSlots();
