@@ -772,7 +772,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
   var BACK = false, MAIL = false, TAKEN = [], LATE = [];
   function api(path, body) {
     var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 30000);
     var name = path.replace(/^api\//, ''), url = path, opt = { cache: 'no-store', signal: ctl ? ctl.signal : undefined };
     if (CFG.api) {
       // Apps Script 웹 앱: 사전 요청(preflight)이 없도록 글자(text/plain)로 보낸다. 동작은 action 으로 구분한다
@@ -826,7 +826,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     if (n === 3) {
       if (!keepScroll) state.monthIdx = defaultMonthIdx();
       renderCal();
-      if (BACK && !keepScroll) loadServerSlots().then(function () { if (state.step === 3) renderCal(); }, function () {});
+      if ((BACK || CFG.api) && !keepScroll) loadServerSlots().then(function () { if (state.step === 3) renderCal(); }, function () {});
     }
     if (n === 4) { $('#picked').textContent = state.slot ? slotLabel(state.slot) : ''; $('#guardianBox').hidden = state.age !== 'm'; }
     if (n === 5 && state.slot) {
@@ -979,6 +979,8 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
   });
 
   function send(rec) {
+    // 서버 주소가 있는데 아직 연결 전이면 다시 연결해 본다. 실패해도 미리보기로 저장하지 않고 오류로 돌려보낸다(가짜 접수 방지)
+    if (!BACK && CFG.api) return loadServerSlots().then(function () { return send(rec); }, function () { return { ok: false, error: 'no_backend' }; });
     if (!BACK) { var a = load(); a.push(rec); save(a); return Promise.resolve({ ok: true, code: rec.code }); }
     return api('api/book', {
       slotId: rec.slotId, vision: rec.vision, name: rec.name, email: rec.email, phone: rec.phone, gender: rec.gender,
