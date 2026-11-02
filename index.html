@@ -282,7 +282,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     </fieldset>
     <fieldset>
       <legend>평소 시력 교정은 어떤 방법으로 하십니까?</legend>
-      <p class="hint" style="margin:-4px 0 8px">시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.</p>
+      <p class="hint" style="margin:-4px 0 8px">시력 교정 방법에 따라 참여하는 실험 종류가 달라질 수 있습니다.</p>
       <div class="opts">
         <label class="chip"><input type="radio" name="vision" value="none"><span>교정 안 함</span></label>
         <label class="chip"><input type="radio" name="vision" value="lens"><span>콘택트렌즈</span></label>
@@ -430,7 +430,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       { weekday: 4, from: '10:00', to: '14:00', kind: 'closed' },   // 목요일 10–14시
       { weekday: 3, from: '15:00', to: '18:00', kind: 'class' }     // 수요일 15–18시: 수업 수강생용 칸. 이 페이지에서는 '마감'으로 보인다
     ],
-    // Study 구분: 위에서부터 처음 맞는 규칙이 적용되고, 없으면 '1-1'. 1-2(시선 측정) 칸은 안경 착용자가 선택할 수 없다.
+    // Study 구분: 위에서부터 처음 맞는 규칙이 적용되고, 없으면 '1-1'. 안경 착용자는 1-2 칸을 골라도 서버가 Study 1-1(시선 측정 없음)로 기록한다.
     // 규칙 키: weekdays(0=일…6=토), from, to(YYYY-MM-DD)
     studyRules: [ { to: '2026-10-27', study: '1-1' }, { from: '2026-10-28', study: '1-2' } ],
     api: 'https://script.google.com/macros/s/AKfycbxQcR95rHEiWouNLuYiSjp2LbVBiddHg0atxcjuwtt-WiMi127LfS6hxEKKeDPyntTrpw/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
@@ -512,7 +512,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '실험 장소에 자차를 가져오십니까?': 'Will you drive your own car to the venue?',
       '주차권 준비에 필요합니다. 자차 이용 시 1인당 1시간 주차권 2매가 제공됩니다.': 'This helps us prepare parking tickets. If you drive, two 1-hour parking tickets per person are provided.',
       '교정 안 함': 'None', '콘택트렌즈': 'Contact lenses', '안경': 'Glasses',
-      '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': 'Available sessions may differ depending on how you correct your vision.',
+      '시력 교정 방법에 따라 참여하는 실험 종류가 달라질 수 있습니다.': 'The type of experiment you take part in may differ depending on how you correct your vision.',
       '안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.': 'If you wear glasses, you will take part in the standard driving experiment (no eye tracking) with your glasses on.',
       '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': 'I agree to the collection and use of my name and contact details for scheduling. This information is stored separately from research data and will be destroyed after the experiment ends.',
       '신청 완료': 'Submit application',
@@ -531,8 +531,6 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '신청 코드와 이메일이 일치하는 신청을 찾을 수 없습니다.': 'No booking matches this code and email.',
       '닫기': 'Close',
       '시선 측정 포함': 'Eye tracking included',
-      '안경 착용 불가': 'Not for glasses wearers',
-      '불가': 'N/A',
       '약속 시각 10분 전까지 도착하세요. 이 일정은 안경형 시선 측정 장비를 착용하므로 콘택트렌즈를 끼거나 안경 없이 오세요. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': 'Please arrive 10 minutes before your appointment. This session uses a glasses-type eye-tracking device, so wear contact lenses or come without glasses. If you do not feel well, you can change your appointment.',
       '일정을 바꾸려면 취소한 뒤 다시 신청하세요.': 'To change your time, cancel and apply again.',
       '참여는 자발적이며 언제든 그만둘 수 있습니다. 수집한 연락처는 연구 자료와 분리해 관리합니다.': 'Participation is voluntary, and you may stop at any time. Contact details are kept separately from research data.',
@@ -638,7 +636,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '실험 장소에 자차를 가져오십니까?': '您会自驾前往实验地点吗？',
       '주차권 준비에 필요합니다. 자차 이용 시 1인당 1시간 주차권 2매가 제공됩니다.': '用于准备停车券。自驾者每人可获2张1小时停车券。',
       '교정 안 함': '不矫正', '콘택트렌즈': '隐形眼镜', '안경': '眼镜',
-      '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': '根据视力矫正方式，可参加的日程可能有所不同。',
+      '시력 교정 방법에 따라 참여하는 실험 종류가 달라질 수 있습니다.': '根据视力矫正方式，所参加的实验类型可能有所不同。',
       '안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.': '佩戴眼镜者将戴着眼镜参加常规驾驶实验（无视线测量）。',
       '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': '我同意为安排日程而收集和使用我的姓名和联系方式。该信息与研究数据分开保管，实验结束后将予以销毁。',
       '신청 완료': '提交报名',
@@ -657,8 +655,6 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '신청 코드와 이메일이 일치하는 신청을 찾을 수 없습니다.': '未找到与该报名码和邮箱匹配的报名。',
       '닫기': '关闭',
       '시선 측정 포함': '含视线测量',
-      '안경 착용 불가': '眼镜佩戴者不可',
-      '불가': '不可',
       '약속 시각 10분 전까지 도착하세요. 이 일정은 안경형 시선 측정 장비를 착용하므로 콘택트렌즈를 끼거나 안경 없이 오세요. 컨디션이 나쁘면 일정을 바꿀 수 있습니다.': '请在预约时间前10分钟到达。本日程需佩戴眼镜式视线测量设备，请佩戴隐形眼镜或不戴眼镜前来。如果身体不适，可以更改日程。',
       '일정을 바꾸려면 취소한 뒤 다시 신청하세요.': '如需更改时间，请先取消再重新报名。',
       '참여는 자발적이며 언제든 그만둘 수 있습니다. 수집한 연락처는 연구 자료와 분리해 관리합니다.': '参加完全自愿，您可随时退出。所收集的联系方式与研究数据分开管理。',
@@ -763,15 +759,6 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     return out.sort(function (a, b) { return a.day < b.day ? -1 : a.day > b.day ? 1 : a.start - b.start; });
   }
   var SLOTS = buildSlots();
-  // 안경 착용자가 참여할 수 있는 마지막 날 = 1-1 칸이 있는 마지막 날
-  function glassesLastDay() {
-    var d = SLOTS.filter(function (s) { return s.kind === 'open' && s.study !== '1-2'; }).map(function (s) { return s.day; });
-    return d.sort().pop();
-  }
-  function dateLong(s) {
-    var d = parse(s), m = d.getMonth() + 1, n = d.getDate();
-    return LANG === 'en' ? MON_FULL[m - 1] + ' ' + n : LANG === 'zh' ? m + '月' + n + '日' : m + '월 ' + n + '일';
-  }
   function updateGlassesNote() {
     var r = document.querySelector('input[name=vision]:checked'), box = $('#glassesNote'), on = !!r && r.value === 'glasses';
     box.hidden = !on;
@@ -888,7 +875,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       var d = new Date(y, mo, day), k = ymd(d), inR = d >= first && d <= last, n = inR ? freeCount(k) : 0;
       var sel = state.day === k ? ' sel' : '';
       var ds = inR ? SLOTS.filter(function (s) { return s.day === k; }) : [];
-      var sub = !inR ? '' : n > 0 ? tf('{n}자리', { n: n }) : (ds.length ? (ds.every(function (s) { return slotState(s) === 'noeye'; }) ? t('불가') : t('마감')) : '');
+      var sub = !inR ? '' : n > 0 ? tf('{n}자리', { n: n }) : (ds.length ? (t('마감')) : '');
       html += '<button type="button" class="day' + sel + '" data-day="' + k + '"' + (n ? '' : ' disabled') +
         ' aria-label="' + md(k) + (n ? ', ' + tf('{n}자리', { n: n }) : ', ' + t('신청 불가')) + '">' + day + '<small>' + sub + '</small></button>';
     }
@@ -908,7 +895,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     var list = SLOTS.filter(function (s) { return s.day === state.day; });
     box.innerHTML = '<div style="font-weight:600">' + md(state.day) + '</div>' + list.map(function (s) {
       var st = slotState(s), sel = state.slot && state.slot.id === s.id ? ' sel' : '';
-      var tag = st === 'booked' ? t('마감') : st === 'late' ? t('신청 마감') : st === 'noeye' ? t('안경 착용 불가') : (s.study === '1-2' && state.vision !== 'glasses' ? t('시선 측정 포함') : '');
+      var tag = st === 'booked' ? t('마감') : st === 'late' ? t('신청 마감') : (s.study === '1-2' && state.vision !== 'glasses' ? t('시선 측정 포함') : '');
       return '<button type="button" class="slot' + sel + '" data-slot="' + s.id + '"' + (st === 'free' ? '' : ' disabled') + '><span>' +
         fmt(s.start) + ' ~ ' + fmt(s.end) + '</span>' + (tag ? '<span class="tag">' + tag + '</span>' : '') + '</button>';
     }).join('');
