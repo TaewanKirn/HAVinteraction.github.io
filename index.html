@@ -513,7 +513,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '주차권 준비에 필요합니다. 자차 이용 시 1인당 1시간 주차권 2매가 제공됩니다.': 'This helps us prepare parking tickets. If you drive, two 1-hour parking tickets per person are provided.',
       '교정 안 함': 'None', '콘택트렌즈': 'Contact lenses', '안경': 'Glasses',
       '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': 'Available sessions may differ depending on how you correct your vision.',
-      '안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.': 'If you wear glasses, you can take part only through {date}.',
+      '안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.': 'If you wear glasses, you will take part in the standard driving experiment (no eye tracking) with your glasses on.',
       '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': 'I agree to the collection and use of my name and contact details for scheduling. This information is stored separately from research data and will be destroyed after the experiment ends.',
       '신청 완료': 'Submit application',
       '신청이 접수되었습니다': 'Your application has been received',
@@ -639,7 +639,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       '주차권 준비에 필요합니다. 자차 이용 시 1인당 1시간 주차권 2매가 제공됩니다.': '用于准备停车券。自驾者每人可获2张1小时停车券。',
       '교정 안 함': '不矫正', '콘택트렌즈': '隐形眼镜', '안경': '眼镜',
       '시력 교정 방법에 따라 실험 참여 일정이 달라질 수 있습니다.': '根据视力矫正方式，可参加的日程可能有所不同。',
-      '안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.': '佩戴眼镜者仅可参加截至{date}的实验。',
+      '안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.': '佩戴眼镜者将戴着眼镜参加常规驾驶实验（无视线测量）。',
       '일정 안내를 위해 성명과 연락처를 수집·이용하는 데 동의합니다. 이 정보는 연구 자료와 분리해 보관하며 실험 종료 후에 파기할 예정입니다.': '我同意为安排日程而收集和使用我的姓名和联系方式。该信息与研究数据分开保管，实验结束后将予以销毁。',
       '신청 완료': '提交报名',
       '신청이 접수되었습니다': '报名已受理',
@@ -775,7 +775,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
   function updateGlassesNote() {
     var r = document.querySelector('input[name=vision]:checked'), box = $('#glassesNote'), on = !!r && r.value === 'glasses';
     box.hidden = !on;
-    box.textContent = on ? tf('안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.', { date: dateLong(glassesLastDay()) }) : '';
+    box.textContent = on ? tf('안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.') : '';
   }
 
   var state = { step: 1, day: null, slot: null, vision: '', car: '', age: '', monthIdx: 0 };
@@ -816,7 +816,6 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
   function slotState(sl) {
     if (takenIds().indexOf(sl.id) >= 0) return 'booked';
     if (BACK ? LATE.indexOf(sl.id) >= 0 : tooLate(sl)) return 'late';
-    if (sl.study === '1-2' && state.vision === 'glasses') return 'noeye';
     if (sl.kind === 'class') return 'booked';   // 수강생용 칸은 신청자에게 '마감'
     return 'free';
   }
@@ -847,8 +846,8 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
       $('#doneSlot').textContent = slotLabel(state.slot);
       $('#previewNote').hidden = BACK;
       $('#mailNote').hidden = !(BACK && MAIL);
-      $('#dayNote11').hidden = state.slot.study === '1-2';
-      $('#dayNote12').hidden = state.slot.study !== '1-2';
+      $('#dayNote11').hidden = state.slot.study === '1-2' && state.vision !== 'glasses';
+      $('#dayNote12').hidden = state.slot.study !== '1-2' || state.vision === 'glasses';
     }
     if (!keepScroll) window.scrollTo({ top: 0 });
   }
@@ -895,7 +894,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     }
     $('#cal').innerHTML = html;
     $('#s3study').textContent = tf('실험 1 (~{d1}): 일반 주행 실험', { d1: mdShort(CFG.studyRules[0].to) }) + '\n' + tf('실험 2 ({d2}~): 시선 추적(아이트래킹) 실험', { d2: mdShort(CFG.studyRules[1].from) });
-    $('#s3hint').textContent = tf('{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.', { range: mdShort(CFG.start) + ' ~ ' + mdShort(CFG.end), min: CFG.sessionMin }) + (state.vision === 'glasses' ? ' ' + tf('안경을 쓰시는 분은 {date}까지만 실험에 참여할 수 있습니다.', { date: dateLong(glassesLastDay()) }) : '');
+    $('#s3hint').textContent = tf('{range} 중 날짜를 고른 뒤 시간을 선택하세요. 한 번에 약 {min}분입니다.', { range: mdShort(CFG.start) + ' ~ ' + mdShort(CFG.end), min: CFG.sessionMin }) + (state.vision === 'glasses' ? ' ' + tf('안경을 쓰시는 분은 안경을 쓴 채로 일반 주행 실험(시선 측정 없음)에 참여합니다.') : '');
     if (state.slot && slotState(state.slot) !== 'free') state.slot = null;
     renderSlots();
   }
@@ -909,7 +908,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     var list = SLOTS.filter(function (s) { return s.day === state.day; });
     box.innerHTML = '<div style="font-weight:600">' + md(state.day) + '</div>' + list.map(function (s) {
       var st = slotState(s), sel = state.slot && state.slot.id === s.id ? ' sel' : '';
-      var tag = st === 'booked' ? t('마감') : st === 'late' ? t('신청 마감') : st === 'noeye' ? t('안경 착용 불가') : (s.study === '1-2' ? t('시선 측정 포함') : '');
+      var tag = st === 'booked' ? t('마감') : st === 'late' ? t('신청 마감') : st === 'noeye' ? t('안경 착용 불가') : (s.study === '1-2' && state.vision !== 'glasses' ? t('시선 측정 포함') : '');
       return '<button type="button" class="slot' + sel + '" data-slot="' + s.id + '"' + (st === 'free' ? '' : ' disabled') + '><span>' +
         fmt(s.start) + ' ~ ' + fmt(s.end) + '</span>' + (tag ? '<span class="tag">' + tag + '</span>' : '') + '</button>';
     }).join('');
