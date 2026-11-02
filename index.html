@@ -425,7 +425,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     sessionMin: 60,            // 참가자가 머무는 시간
     pitchMin: 90,              // 다음 칸까지의 간격 (세션 + 장비 리셋·정리)
     minLeadHours: 12,          // 시작 시각 이 시간 전까지 신청 가능
-    openWeekdays: [0, 1, 2, 3, 4, 5],   // 토요일(6) 제외
+    openWeekdays: [0, 1, 2, 3, 4, 5, 6],   // 일~토. 모집 기간(~11/11) 안의 토요일은 11/7 하나
     blocks: [
       { weekday: 4, from: '10:00', to: '14:00', kind: 'closed' },   // 목요일 10–14시
       { weekday: 3, from: '15:00', to: '18:00', kind: 'class' }     // 수요일 15–18시: 수업 수강생용 칸. 이 페이지에서는 '마감'으로 보인다
