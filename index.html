@@ -434,7 +434,7 @@ footer { margin-top: 28px; font-size: 14px; color: var(--muted); }
     // Study 구분: 위에서부터 처음 맞는 규칙이 적용되고, 없으면 '1-1'. 안경 착용자는 1-2 칸을 골라도 서버가 Study 1-1(시선 측정 없음)로 기록한다.
     // 규칙 키: weekdays(0=일…6=토), from, to(YYYY-MM-DD)
     studyRules: [ { to: '2026-10-27', study: '1-1' }, { from: '2026-10-28', study: '1-2' } ],
-    api: 'https://script.google.com/macros/s/AKfycbxQcR95rHEiWouNLuYiSjp2LbVBiddHg0atxcjuwtt-WiMi127LfS6hxEKKeDPyntTrpw/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
+    api: 'https://script.google.com/macros/s/AKfycbwWOz1csJkie30ZmeDDc7NRUC86rf7QgOpgIwjnl6d4GMfYScRAhjqnDujUs1o8fKSAuw/exec'                    // Apps Script 웹 앱 주소(…/exec). 비어 있으면 같은 주소의 server.py를 쓴다. make_site.py --api 로 채운다
   };
   // 이 값들은 서버가 없을 때(미리보기)만 쓴다. 서버가 있으면 서버의 schedule.json 이 일정을 정한다.
   var STORE = 'hav_recruit_draft_bookings';
